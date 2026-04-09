@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://superpowers.speedsgpt.com/sitemap.xml
