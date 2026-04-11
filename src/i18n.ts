@@ -1,0 +1,1741 @@
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+
+const resources = {
+  en: {
+    translation: {
+      nav: {
+        howItWorks: "How it Works",
+        features: "Features",
+        installation: "Installation",
+        workflow: "Workflow",
+        skills: "Skills",
+        docs: "Docs",
+        getStarted: "Get Started",
+        backToHome: "Back to Home"
+      },
+      hero: {
+        badge: "v2.0: The Agentic Skills Framework",
+        title1: "SUPERPOWERS:",
+        title2: "AGENTIC SKILLS",
+        title3: "THAT WORK",
+        desc: "An agentic skills framework & software development methodology that actually works. Superpowers gives your AI agents a standardized toolkit to handle complex engineering tasks with precision.",
+        installBtn: "Install Now",
+        githubBtn: "Star on GitHub"
+      },
+      howItWorks: {
+        title: "HOW IT WORKS",
+        subtitle: "Superpowers bridges the gap between raw AI potential and production-ready engineering.",
+        step1Title: "Standardized Skills",
+        step1Desc: "A library of pre-built, audited skills that agents can call upon to perform specific, high-value tasks.",
+        step2Title: "Agentic Methodology",
+        step2Desc: "A software development methodology designed for a world where AI agents are primary contributors.",
+        step3Title: "Universal Compatibility",
+        step3Desc: "Works across all major AI coding tools, ensuring your agents have the same \"Superpowers\" everywhere."
+      },
+      features: {
+        title: "BUILT FOR THE MODERN DEVELOPER",
+        desc: "Stop wasting time on repetitive tasks. Superpowers provides a curated collection of utilities that integrate seamlessly into your shell.",
+        stats: "Used by 2,000+ devs",
+        methodologyTag: "METHODOLOGY",
+        methodologyTitle: "Agentic Skills Framework",
+        methodologyDesc: "Superpowers isn't just a tool; it's a methodology. It provides a structured way to give AI agents the specific skills they need to handle complex software development tasks.",
+        methodologyList: ["Standardized Skill Library", "Agent-First Design", "Scalable Methodology"],
+        multiPlatformTitle: "Multi-Platform",
+        multiPlatformDesc: "Native support for Claude Code, Cursor, Copilot, and Gemini CLI.",
+        methodologyFirstTitle: "Methodology First",
+        methodologyFirstDesc: "Built on a philosophy of making AI agents more reliable and capable."
+      },
+      installation: {
+        title: "INSTALLATION & SETUP",
+        subtitle: "Superpowers supports all major AI development environments.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Install directly from the Official Marketplace or the community Plugin Marketplace.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Enable Superpowers in Cursor via the Plugin Marketplace for seamless agentic integration.",
+        cliTitle: "CLI Tools",
+        cliDesc: "Native support for GitHub Copilot CLI, Gemini CLI, Codex, and OpenCode.",
+        verifyTitle: "Verify Your Superpowers",
+        verifyDesc: "Always verify your installation to ensure all skills are correctly linked and ready for your agents."
+      },
+      comparison: {
+        title: "WHY CHOOSE SUPERPOWERS?",
+        oldWay: "The Old Way",
+        oldList: [
+          "Unreliable AI agent behavior",
+          "Manual prompt engineering for every task",
+          "Fragmented developer workflows",
+          "Lack of standardized AI toolsets"
+        ],
+        newWay: "The Superpowers Way",
+        newList: [
+          "Predictable, high-performance agent skills",
+          "Standardized methodology for AI development",
+          "Seamless integration across multiple AI platforms",
+          "Scalable framework for team collaboration"
+        ]
+      },
+      workflow: {
+        title: "THE BASIC WORKFLOW",
+        subtitle: "Simple, repeatable, and powerful.",
+        step1: "Initialize",
+        step1Desc: "Run 'sp init' in your project root to prepare the environment.",
+        step2: "Select Skills",
+        step2Desc: "Choose from the library or create custom skills for your agent.",
+        step3: "Empower",
+        step3Desc: "Agents automatically use the skills to solve complex tasks.",
+        step4: "Iterate",
+        step4Desc: "Refine skills as your project grows and agents evolve."
+      },
+      skills: {
+        title: "SKILLS LIBRARY",
+        badge: "50+ Skills & Counting",
+        skill1: "Code Architect",
+        skill1Desc: "Advanced project scaffolding and structural design skills.",
+        skill2: "Git Master",
+        skill2Desc: "Complex rebase, merge conflict resolution, and history management.",
+        skill3: "Test Engineer",
+        skill3Desc: "Automated unit, integration, and E2E test generation.",
+        skill4: "Security Auditor",
+        skill4Desc: "Real-time vulnerability scanning and patch suggestion.",
+        skill5: "DevOps Hero",
+        skill5Desc: "CI/CD pipeline optimization and cloud deployment skills.",
+        skill6: "Docs Generator",
+        skill6Desc: "Automatic, high-quality documentation from code analysis."
+      },
+      philosophy: {
+        title: "PHILOSOPHY",
+        quote: "\"We believe that AI agents are not just assistants, but primary contributors. Superpowers provides the framework to make that contribution reliable, scalable, and powerful.\"",
+        tags: ["Open Source", "Agent-First", "Community Driven"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+An agentic skills framework & software development methodology that actually works.
+
+Superpowers gives your AI agents a standardized toolkit to handle complex engineering tasks with precision.
+
+## Why Superpowers?
+
+AI agents are powerful, but they often lack the specific, reliable tools needed for production-grade software engineering. Superpowers bridges this gap by providing:
+
+- **Standardized Skills**: A library of pre-built, audited skills.
+- **Agentic Methodology**: A workflow designed for AI-first development.
+- **Universal Compatibility**: Works with Claude Code, Cursor, and more.
+
+## Installation
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Enable via the Plugin Marketplace.
+
+### Manual Setup
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Core Skills
+
+### 1. Code Architect
+Advanced project scaffolding and structural design.
+
+### 2. Git Master
+Complex rebase and merge conflict resolution.
+
+### 3. Test Engineer
+Automated unit and E2E test generation.
+
+## Usage
+
+Initialize Superpowers in your project:
+\`\`\`bash
+sp init
+\`\`\`
+
+Verify your installation:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Philosophy
+
+We believe that AI agents are not just assistants, but primary contributors. Superpowers provides the framework to make that contribution reliable, scalable, and powerful.
+`
+      },
+      footer: {
+        copy: "© 2026 Superpowers Project. Open source under MIT License.",
+        download: "Download",
+        disclaimer: "Disclaimer: This site is a reference to the Superpowers GitHub repository and is not affiliated with the original author."
+      }
+    }
+  },
+  zh: {
+    translation: {
+      nav: {
+        howItWorks: "工作原理",
+        features: "特性",
+        installation: "安装",
+        workflow: "工作流",
+        skills: "技能库",
+        docs: "文档",
+        getStarted: "立即开始",
+        backToHome: "返回首页"
+      },
+      hero: {
+        badge: "v2.0: 智能体技能框架",
+        title1: "SUPERPOWERS:",
+        title2: "真正有效的",
+        title3: "智能体技能",
+        desc: "一个真正有效的智能体技能框架和软件开发方法论。Superpowers 为您的 AI 智能体提供标准化工具包，以精确处理复杂的工程任务。",
+        installBtn: "立即安装",
+        githubBtn: "GitHub 点星"
+      },
+      howItWorks: {
+        title: "工作原理",
+        subtitle: "Superpowers 弥合了原始 AI 潜力和生产就绪工程之间的鸿沟。",
+        step1Title: "标准化技能",
+        step1Desc: "预构建且经过审计的技能库，智能体可以调用它们来执行特定的高价值任务。",
+        step2Title: "智能体方法论",
+        step2Desc: "专为 AI 智能体作为主要贡献者的世界而设计的软件开发方法论。",
+        step3Title: "广泛兼容性",
+        step3Desc: "支持所有主流 AI 编程工具，确保您的智能体在任何地方都拥有相同的“超能力”。"
+      },
+      features: {
+        title: "为现代开发者打造",
+        desc: "停止在重复性任务上浪费时间。Superpowers 提供了一系列精心挑选的实用程序，可无缝集成到您的终端中。",
+        stats: "2,000+ 开发者已使用",
+        methodologyTag: "方法论",
+        methodologyTitle: "智能体技能框架",
+        methodologyDesc: "Superpowers 不仅仅是一个工具；它是一种方法论。它提供了一种结构化的方式，为 AI 智能体提供处理复杂软件开发任务所需的特定技能。",
+        methodologyList: ["标准化技能库", "智能体优先设计", "可扩展的方法论"],
+        multiPlatformTitle: "多平台支持",
+        multiPlatformDesc: "原生支持 Claude Code, Cursor, Copilot 和 Gemini CLI。",
+        methodologyFirstTitle: "方法论优先",
+        methodologyFirstDesc: "基于使 AI 智能体更可靠、更强大的哲学理念构建。"
+      },
+      installation: {
+        title: "安装与设置",
+        subtitle: "Superpowers 支持所有主流 AI 开发环境。",
+        claudeTitle: "Claude Code",
+        claudeDesc: "直接从官方市场或社区插件市场安装。",
+        cursorTitle: "Cursor",
+        cursorDesc: "通过插件市场在 Cursor 中启用 Superpowers，实现无缝智能体集成。",
+        cliTitle: "命令行工具",
+        cliDesc: "原生支持 GitHub Copilot CLI、Gemini CLI、Codex 和 OpenCode。",
+        verifyTitle: "验证您的超能力",
+        verifyDesc: "始终验证您的安装，以确保所有技能都已正确链接并为您的智能体做好准备。"
+      },
+      comparison: {
+        title: "为什么选择 SUPERPOWERS？",
+        oldWay: "传统方式",
+        oldList: [
+          "不可预测的 AI 智能体行为",
+          "为每个任务手动进行提示词工程",
+          "碎片化的开发工作流",
+          "缺乏标准化的 AI 工具集"
+        ],
+        newWay: "Superpowers 方式",
+        newList: [
+          "可预测、高性能的智能体技能",
+          "标准化的 AI 开发方法论",
+          "跨多个 AI 平台的无缝集成",
+          "适用于团队协作的可扩展框架"
+        ]
+      },
+      workflow: {
+        title: "基础工作流",
+        subtitle: "简单、可重复且强大。",
+        step1: "初始化",
+        step1Desc: "在项目根目录运行 'sp init' 以准备环境。",
+        step2: "选择技能",
+        step2Desc: "从库中选择或为您的智能体创建自定义技能。",
+        step3: "赋能",
+        step3Desc: "智能体自动使用技能来解决复杂任务。",
+        step4: "迭代",
+        step4Desc: "随着项目增长和智能体进化，不断完善技能。"
+      },
+      skills: {
+        title: "技能库",
+        badge: "50+ 技能且在不断增加",
+        skill1: "代码架构师",
+        skill1Desc: "高级项目脚手架和结构设计技能。",
+        skill2: "Git 大师",
+        skill2Desc: "复杂的变基、合并冲突解决和历史管理。",
+        skill3: "测试工程师",
+        skill3Desc: "自动化的单元、集成和端到端测试生成。",
+        skill4: "安全审计员",
+        skill4Desc: "实时漏洞扫描和补丁建议。",
+        skill5: "DevOps 英雄",
+        skill5Desc: "CI/CD 流水线优化和云部署技能。",
+        skill6: "文档生成器",
+        skill6Desc: "通过代码分析自动生成高质量文档。"
+      },
+      philosophy: {
+        title: "哲学理念",
+        quote: "“我们相信 AI 智能体不仅是助手，更是主要贡献者。Superpowers 提供了使这种贡献变得可靠、可扩展且强大的框架。”",
+        tags: ["开源", "智能体优先", "社区驱动"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+一个真正有效的智能体技能框架和软件开发方法论。
+
+Superpowers 为您的 AI 智能体提供标准化工具包，以精确处理复杂的工程任务。
+
+## 为什么选择 Superpowers？
+
+AI 智能体很强大，但它们通常缺乏生产级软件工程所需的特定、可靠的工具。Superpowers 通过提供以下内容来弥补这一差距：
+
+- **标准化技能**：预构建且经过审计的技能库。
+- **智能体方法论**：专为 AI 优先开发设计的工作流。
+- **广泛兼容性**：支持 Claude Code、Cursor 等。
+
+## 安装
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+通过插件市场启用。
+
+### 手动设置
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## 核心技能
+
+### 1. 代码架构师
+高级项目脚手架和结构设计。
+
+### 2. Git 大师
+复杂的变基和合并冲突解决。
+
+### 3. 测试工程师
+自动化的单元和端到端测试生成。
+
+## 使用方法
+
+在您的项目中初始化 Superpowers：
+\`\`\`bash
+sp init
+\`\`\`
+
+验证您的安装：
+\`\`\`bash
+sp verify
+\`\`\`
+
+## 哲学理念
+
+我们相信 AI 智能体不仅是助手，更是主要贡献者。Superpowers 提供了使这种贡献变得可靠、可扩展且强大的框架。
+`
+      },
+      footer: {
+        copy: "© 2026 Superpowers 项目。基于 MIT 协议开源。",
+        download: "下载",
+        disclaimer: "声明：本网站仅引用 Superpowers GitHub 仓库，并非原作者。"
+      }
+    }
+  },
+  ja: {
+    translation: {
+      nav: {
+        howItWorks: "仕組み",
+        features: "機能",
+        installation: "インストール",
+        workflow: "ワークフロー",
+        skills: "スキル",
+        docs: "ドキュメント",
+        getStarted: "始める"
+      },
+      hero: {
+        badge: "v2.0: エージェントスキルフレームワーク",
+        title1: "SUPERPOWERS:",
+        title2: "機能する",
+        title3: "エージェントスキル",
+        desc: "実際に機能するエージェントスキルフレームワークとソフトウェア開発手法。Superpowersは、AIエージェントに複雑なエンジニアリングタスクを正確に処理するための標準化されたツールキットを提供します。",
+        installBtn: "今すぐインストール",
+        githubBtn: "GitHubでスター"
+      },
+      howItWorks: {
+        title: "仕組み",
+        subtitle: "Superpowersは、生のAIの可能性と本番環境に対応したエンジニアリングの間のギャップを埋めます。",
+        step1Title: "標準化されたスキル",
+        step1Desc: "エージェントが特定の高価値タスクを実行するために呼び出すことができる、構築済みで監査済みのスキルのライブラリ。",
+        step2Title: "エージェント手法",
+        step2Desc: "AIエージェントが主要な貢献者である世界のために設計されたソフトウェア開発手法。",
+        step3Title: "ユニバーサルな互換性",
+        step3Desc: "すべての主要なAIコーディングツールで動作し、エージェントがどこでも同じ「スーパーパワー」を持てるようにします。"
+      },
+      features: {
+        title: "現代の開発者のために構築",
+        desc: "繰り返しのタスクに時間を費やすのはやめましょう。Superpowersは、シェルにシームレスに統合される厳選されたユーティリティコレクションを提供します。",
+        stats: "2,000人以上の開発者が使用",
+        methodologyTag: "手法",
+        methodologyTitle: "エージェントスキルフレームワーク",
+        methodologyDesc: "Superpowersは単なるツールではありません。それは手法です。AIエージェントに複雑なソフトウェア開発タスクを処理するために必要な特定のスキルを与えるための構造化された方法を提供します。",
+        methodologyList: ["標準化されたスキルライブラリ", "エージェント優先設計", "スケーラブルな手法"],
+        multiPlatformTitle: "マルチプラットフォーム",
+        multiPlatformDesc: "Claude Code、Cursor、Copilot、Gemini CLIをネイティブにサポート。",
+        methodologyFirstTitle: "手法優先",
+        methodologyFirstDesc: "AIエージェントをより信頼性が高く有能なものにするという哲学に基づいて構築されています。"
+      },
+      installation: {
+        title: "インストールとセットアップ",
+        subtitle: "Superpowersは、すべての主要なAI開発環境をサポートしています。",
+        claudeTitle: "Claude Code",
+        claudeDesc: "公式マーケットプレイスまたはコミュニティプラグインマーケットプレイスから直接インストールします。",
+        cursorTitle: "Cursor",
+        cursorDesc: "シームレスなエージェント統合のために、プラグインマーケットプレイス経由でCursorでSuperpowersを有効にします。",
+        cliTitle: "CLIツール",
+        cliDesc: "GitHub Copilot CLI、Gemini CLI、Codex、OpenCodeをネイティブにサポート。",
+        verifyTitle: "スーパーパワーを確認する",
+        verifyDesc: "すべてのスキルが正しくリンクされ、エージェントの準備ができていることを確認するために、常にインストールを確認してください。"
+      },
+      comparison: {
+        title: "なぜ SUPERPOWERS を選ぶのか？",
+        oldWay: "従来の方法",
+        oldList: [
+          "信頼性の低いAIエージェントの動作",
+          "すべてのタスクに対する手動のプロンプトエンジニアリング",
+          "断片化された開発ワークフロー",
+          "標準化されたAIツールセットの欠如"
+        ],
+        newWay: "Superpowers の方法",
+        newList: [
+          "予測可能で高性能なエージェントスキル",
+          "AI開発のための標準化された手法",
+          "複数のAIプラットフォームにわたるシームレスな統合",
+          "チームコラボレーションのためのスケーラブルなフレームワーク"
+        ]
+      },
+      workflow: {
+        title: "基本ワークフロー",
+        subtitle: "シンプルで、繰り返し可能で、強力です。",
+        step1: "初期化",
+        step1Desc: "環境を準備するために、プロジェクトのルートで「sp init」を実行します。",
+        step2: "スキルの選択",
+        step2Desc: "ライブラリから選択するか、エージェント用のカスタムスキルを作成します。",
+        step3: "権限付与",
+        step3Desc: "エージェントはスキルを自動的に使用して複雑なタスクを解決します。",
+        step4: "反復",
+        step4Desc: "プロジェクトが成長し、エージェントが進化するにつれて、スキルを洗練させます。"
+      },
+      skills: {
+        title: "スキルライブラリ",
+        badge: "50以上のスキル、さらに増加中",
+        skill1: "コードアーキテクト",
+        skill1Desc: "高度なプロジェクトスキャフォールディングと構造設計スキル。",
+        skill2: "Gitマスター",
+        skill2Desc: "複雑なリベース、マージコンフリクトの解決、履歴管理。",
+        skill3: "テストエンジニア",
+        skill3Desc: "自動化されたユニット、統合、E2Eテストの生成。",
+        skill4: "セキュリティ監査人",
+        skill4Desc: "リアルタイムの脆弱性スキャンとパッチの提案。",
+        skill5: "DevOpsヒーロー",
+        skill5Desc: "CI/CDパイプラインの最適化とクラウドデプロイスキル。",
+        skill6: "ドキュメント生成器",
+        skill6Desc: "コード分析からの自動で高品質なドキュメント作成。"
+      },
+      philosophy: {
+        title: "哲学",
+        quote: "「AIエージェントは単なるアシスタントではなく、主要な貢献者であると私たちは信じています。Superpowersは、その貢献を信頼性が高く、スケーラブルで、強力なものにするためのフレームワークを提供します。」",
+        tags: ["オープンソース", "エージェント優先", "コミュニティ主導"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+実際に機能するエージェントスキルフレームワークとソフトウェア開発手法。
+
+Superpowersは、AIエージェントに複雑なエンジニアリングタスクを正確に処理するための標準化されたツールキットを提供します。
+
+## なぜ Superpowers なのか？
+
+AIエージェントは強力ですが、本番環境に対応したソフトウェアエンジニアリングに必要な特定の信頼できるツールが不足していることがよくあります。Superpowersは、以下を提供することでこのギャップを埋めます。
+
+- **標準化されたスキル**: 構築済みで監査済みのスキルのライブラリ。
+- **エージェント手法**: AI優先の開発向けに設計されたワークフロー。
+- **ユニバーサルな互換性**: Claude Code、Cursorなどで動作します。
+
+## インストール
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+プラグインマーケットプレイス経由で有効にします。
+
+### 手動セットアップ
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## コアスキル
+
+### 1. コードアーキテクト
+高度なプロジェクトスキャフォールディングと構造設計。
+
+### 2. Gitマスター
+複雑なリベースとマージコンフリクトの解決。
+
+### 3. テストエンジニア
+自動化されたユニットおよびE2Eテストの生成。
+
+## 使用方法
+
+プロジェクトでSuperpowersを初期化します。
+\`\`\`bash
+sp init
+\`\`\`
+
+インストールを確認します。
+\`\`\`bash
+sp verify
+\`\`\`
+
+## 哲学
+
+AIエージェントは単なるアシスタントではなく、主要な貢献者であると私たちは信じています。Superpowersは、その貢献を信頼性が高く、スケーラブルで、強力なものにするためのフレームワークを提供します。
+`
+      },
+      footer: {
+        copy: "© 2026 Superpowers プロジェクト。MITライセンスの下でオープンソース。",
+        download: "ダウンロード",
+        disclaimer: "免責事項：このサイトは Superpowers GitHub リポジトリの参照であり、原作者とは関係ありません。"
+      }
+    }
+  },
+  ko: {
+    translation: {
+      nav: {
+        howItWorks: "작동 방식",
+        features: "기능",
+        installation: "설치",
+        workflow: "워크플로우",
+        skills: "스킬",
+        docs: "문서",
+        getStarted: "시작하기"
+      },
+      hero: {
+        badge: "v2.0: 에이전트 스킬 프레임워크",
+        title1: "SUPERPOWERS:",
+        title2: "작동하는",
+        title3: "에이전트 스킬",
+        desc: "실제로 작동하는 에이전트 스킬 프레임워크 및 소프트웨어 개발 방법론. Superpowers는 AI 에이전트에게 복잡한 엔지니어링 작업을 정밀하게 처리할 수 있는 표준화된 툴킷을 제공합니다.",
+        installBtn: "지금 설치",
+        githubBtn: "GitHub 스타"
+      },
+      howItWorks: {
+        title: "작동 방식",
+        subtitle: "Superpowers는 원시 AI 잠재력과 프로덕션 준비 엔지니어링 사이의 간극을 메웁니다.",
+        step1Title: "표준화된 스킬",
+        step1Desc: "에이전트가 특정 고부가가치 작업을 수행하기 위해 호출할 수 있는 사전 구축되고 검증된 스킬 라이브러리.",
+        step2Title: "에이전트 방법론",
+        step2Desc: "AI 에이전트가 주요 기여자인 세상을 위해 설계된 소프트웨어 개발 방법론.",
+        step3Title: "범용 호환성",
+        step3Desc: "모든 주요 AI 코딩 도구에서 작동하여 에이전트가 어디서나 동일한 \"초능력\"을 가질 수 있도록 합니다."
+      },
+      features: {
+        title: "현대 개발자를 위한 설계",
+        desc: "반복적인 작업에 시간을 낭비하지 마세요. Superpowers는 쉘에 원활하게 통합되는 엄선된 유틸리티 컬렉션을 제공합니다.",
+        stats: "2,000명 이상의 개발자가 사용 중",
+        methodologyTag: "방법론",
+        methodologyTitle: "에이전트 스킬 프레임워크",
+        methodologyDesc: "Superpowers는 단순한 도구가 아니라 방법론입니다. AI 에이전트가 복잡한 소프트웨어 개발 작업을 처리하는 데 필요한 특정 스킬을 부여하는 구조화된 방식을 제공합니다.",
+        methodologyList: ["표준화된 스킬 라이브러리", "에이전트 우선 설계", "확장 가능한 방법론"],
+        multiPlatformTitle: "멀티 플랫폼",
+        multiPlatformDesc: "Claude Code, Cursor, Copilot 및 Gemini CLI에 대한 기본 지원.",
+        methodologyFirstTitle: "방법론 우선",
+        methodologyFirstDesc: "AI 에이전트를 더욱 안정적이고 유능하게 만든다는 철학을 바탕으로 구축되었습니다."
+      },
+      installation: {
+        title: "설치 및 설정",
+        subtitle: "Superpowers는 모든 주요 AI 개발 환경을 지원합니다.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "공식 마켓플레이스 또는 커뮤니티 플러그인 마켓플레이스에서 직접 설치하세요.",
+        cursorTitle: "Cursor",
+        cursorDesc: "원활한 에이전트 통합을 위해 플러그인 마켓플레이스를 통해 Cursor에서 Superpowers를 활성화하세요.",
+        cliTitle: "CLI 도구",
+        cliDesc: "GitHub Copilot CLI, Gemini CLI, Codex 및 OpenCode에 대한 기본 지원.",
+        verifyTitle: "초능력 확인",
+        verifyDesc: "모든 스킬이 올바르게 연결되고 에이전트가 준비되었는지 확인하기 위해 항상 설치를 확인하세요."
+      },
+      comparison: {
+        title: "왜 SUPERPOWERS인가요?",
+        oldWay: "기존 방식",
+        oldList: [
+          "예측 불가능한 AI 에이전트 동작",
+          "모든 작업에 대한 수동 프롬프트 엔지니어링",
+          "파편화된 개발 워크플로우",
+          "표준화된 AI 도구 세트 부재"
+        ],
+        newWay: "Superpowers 방식",
+        newList: [
+          "예측 가능하고 고성능인 에이전트 스킬",
+          "AI 개발을 위한 표준화된 방법론",
+          "여러 AI 플랫폼 간의 원활한 통합",
+          "팀 협업을 위한 확장 가능한 프레임워크"
+        ]
+      },
+      workflow: {
+        title: "기본 워크플로우",
+        subtitle: "간단하고 반복 가능하며 강력합니다.",
+        step1: "초기화",
+        step1Desc: "환경을 준비하기 위해 프로젝트 루트에서 'sp init'을 실행합니다.",
+        step2: "스킬 선택",
+        step2Desc: "라이브러리에서 선택하거나 에이전트를 위한 맞춤형 스킬을 만듭니다.",
+        step3: "권한 부여",
+        step3Desc: "에이전트는 복잡한 작업을 해결하기 위해 스킬을 자동으로 사용합니다.",
+        step4: "반복",
+        step4Desc: "프로젝트가 성장하고 에이전트가 발전함에 따라 스킬을 개선합니다."
+      },
+      skills: {
+        title: "스킬 라이브러리",
+        badge: "50개 이상의 스킬, 계속 추가 중",
+        skill1: "코드 아키텍트",
+        skill1Desc: "고급 프로젝트 스캐폴딩 및 구조 설계 스킬.",
+        skill2: "Git 마스터",
+        skill2Desc: "복잡한 리베이스, 병합 충돌 해결 및 이력 관리.",
+        skill3: "테스트 엔지니어",
+        skill3Desc: "자동화된 유닛, 통합 및 E2E 테스트 생성.",
+        skill4: "보안 감사자",
+        skill4Desc: "실시간 취약점 스캔 및 패치 제안.",
+        skill5: "DevOps 히어로",
+        skill5Desc: "CI/CD 파이프라인 최적화 및 클라우드 배포 스킬.",
+        skill6: "문서 생성기",
+        skill6Desc: "코드 분석을 통한 자동 고품질 문서화."
+      },
+      philosophy: {
+        title: "철학",
+        quote: "“우리는 AI 에이전트가 단순한 조수가 아니라 주요 기여자라고 믿습니다. Superpowers는 그 기여를 안정적이고 확장 가능하며 강력하게 만드는 프레임워크를 제공합니다.”",
+        tags: ["오픈 소스", "에이전트 우선", "커뮤니티 중심"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+실제로 작동하는 에이전트 스킬 프레임워크 및 소프트웨어 개발 방법론.
+
+Superpowers는 AI 에이전트에게 복잡한 엔지니어링 작업을 정밀하게 처리할 수 있는 표준화된 툴킷을 제공합니다.
+
+## 왜 Superpowers인가요?
+
+AI 에이전트는 강력하지만, 프로덕션 준비 소프트웨어 엔지니어링에 필요한 특정하고 신뢰할 수 있는 도구가 부족한 경우가 많습니다. Superpowers는 다음을 제공하여 이 간극을 메웁니다.
+
+- **표준화된 스킬**: 사전 구축되고 검증된 스킬 라이브러리.
+- **에이전트 방법론**: AI 우선 개발을 위해 설계된 워크플로우.
+- **범용 호환성**: Claude Code, Cursor 등과 호환됩니다.
+
+## 설치
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+플러그인 마켓플레이스를 통해 활성화하세요.
+
+### 수동 설정
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## 핵심 스킬
+
+### 1. 코드 아키텍트
+고급 프로젝트 스캐폴딩 및 구조 설계.
+
+### 2. Git 마스터
+복잡한 리베이스 및 병합 충돌 해결.
+
+### 3. 테스트 엔지니어
+자동화된 유닛 및 E2E 테스트 생성.
+
+## 사용법
+
+프로젝트에서 Superpowers를 초기화합니다.
+\`\`\`bash
+sp init
+\`\`\`
+
+설치를 확인합니다.
+\`\`\`bash
+sp verify
+\`\`\`
+
+## 철학
+
+우리는 AI 에이전트가 단순한 조수가 아니라 주요 기여자라고 믿습니다. Superpowers는 그 기여를 안정적이고 확장 가능하며 강력하게 만드는 프레임워크를 제공합니다.
+`
+      },
+      footer: {
+        copy: "© 2026 Superpowers 프로젝트. MIT 라이선스에 따라 오픈 소스.",
+        download: "다운로드",
+        disclaimer: "면책 조항: 이 사이트는 Superpowers GitHub 저장소를 참조하며 원작자와 관련이 없습니다."
+      }
+    }
+  },
+  fr: {
+    translation: {
+      nav: {
+        howItWorks: "Fonctionnement",
+        features: "Fonctionnalités",
+        installation: "Installation",
+        workflow: "Flux de travail",
+        skills: "Compétences",
+        docs: "Docs",
+        getStarted: "Démarrer"
+      },
+      hero: {
+        badge: "v2.0: Le framework de compétences agentiques",
+        title1: "SUPERPOWERS:",
+        title2: "DES COMPÉTENCES",
+        title3: "QUI MARCHENT",
+        desc: "Un framework de compétences agentiques et une méthodologie de développement logiciel qui fonctionnent vraiment. Superpowers donne à vos agents IA une boîte à outils standardisée pour gérer des tâches d'ingénierie complexes avec précision.",
+        installBtn: "Installer maintenant",
+        githubBtn: "Star sur GitHub"
+      },
+      howItWorks: {
+        title: "COMMENT ÇA MARCHE",
+        subtitle: "Superpowers comble le fossé entre le potentiel brut de l'IA et l'ingénierie prête pour la production.",
+        step1Title: "Compétences standardisées",
+        step1Desc: "Une bibliothèque de compétences pré-construites et auditées que les agents peuvent appeler pour effectuer des tâches spécifiques à haute valeur ajoutée.",
+        step2Title: "Méthodologie agentique",
+        step2Desc: "Une méthodologie de développement logiciel conçue pour un monde où les agents IA sont les principaux contributeurs.",
+        step3Title: "Compatibilité universelle",
+        step3Desc: "Fonctionne sur tous les principaux outils de codage IA, garantissant que vos agents ont les mêmes \"Superpowers\" partout."
+      },
+      features: {
+        title: "CONÇU POUR LE DÉVELOPPEUR MODERNE",
+        desc: "Arrêtez de perdre du temps sur des tâches répétitives. Superpowers fournit une collection organisée d'utilitaires qui s'intègrent parfaitement dans votre shell.",
+        stats: "Utilisé par plus de 2 000 développeurs",
+        methodologyTag: "MÉTHODOLOGIE",
+        methodologyTitle: "Framework de compétences agentiques",
+        methodologyDesc: "Superpowers n'est pas seulement un outil ; c'est une méthodologie. Il fournit un moyen structuré de donner aux agents IA les compétences spécifiques dont ils ont besoin pour gérer des tâches de développement logiciel complexes.",
+        methodologyList: ["Bibliothèque de compétences standardisée", "Conception axée sur l'agent", "Méthodologie évolutive"],
+        multiPlatformTitle: "Multi-plateforme",
+        multiPlatformDesc: "Prise en charge native de Claude Code, Cursor, Copilot et Gemini CLI.",
+        methodologyFirstTitle: "La méthodologie d'abord",
+        methodologyFirstDesc: "Construit sur une philosophie visant à rendre les agents IA plus fiables et capables."
+      },
+      installation: {
+        title: "INSTALLATION ET CONFIGURATION",
+        subtitle: "Superpowers prend en charge tous les principaux environnements de développement IA.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Installez directement depuis la Marketplace officielle ou la Marketplace de plugins communautaire.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Activez Superpowers dans Cursor via la Marketplace de plugins pour une intégration agentique transparente.",
+        cliTitle: "Outils CLI",
+        cliDesc: "Support natif pour Claude Code, Cursor, GitHub Copilot CLI et Gemini CLI.",
+        verifyTitle: "Vérifiez vos Superpowers",
+        verifyDesc: "Vérifiez toujours votre installation pour vous assurer que toutes les compétences sont correctement liées et prêtes pour vos agents."
+      },
+      comparison: {
+        title: "POURQUOI CHOISIR SUPERPOWERS ?",
+        oldWay: "L'ancienne méthode",
+        oldList: [
+          "Comportement instable des agents IA",
+          "Ingénierie de prompt manuelle pour chaque tâche",
+          "Flux de travail de développement fragmentés",
+          "Absence d'outils IA standardisés"
+        ],
+        newWay: "La méthode Superpowers",
+        newList: [
+          "Compétences d'agent prévisibles et performantes",
+          "Méthodologie standardisée pour le développement IA",
+          "Intégration transparente sur plusieurs plateformes IA",
+          "Framework évolutif pour la collaboration d'équipe"
+        ]
+      },
+      workflow: {
+        title: "LE FLUX DE TRAVAIL DE BASE",
+        subtitle: "Simple, répétable et puissant.",
+        step1: "Initialiser",
+        step1Desc: "Exécutez 'sp init' à la racine de votre projet pour préparer l'environnement.",
+        step2: "Sélectionner les compétences",
+        step2Desc: "Choisissez dans la bibliothèque ou créez des compétences personnalisées pour votre agent.",
+        step3: "Autonomiser",
+        step3Desc: "Les agents utilisent automatiquement les compétences pour résoudre des tâches complexes.",
+        step4: "Itérer",
+        step4Desc: "Affinez les compétences à mesure que votre projet grandit et que les agents évoluent."
+      },
+      skills: {
+        title: "BIBLIOTHÈQUE DE COMPÉTENCES",
+        badge: "Plus de 50 compétences et ça continue",
+        skill1: "Architecte de code",
+        skill1Desc: "Compétences avancées en échafaudage de projet et conception structurelle.",
+        skill2: "Maître Git",
+        skill2Desc: "Rebase complexe, résolution de conflits de fusion et gestion de l'historique.",
+        skill3: "Ingénieur de test",
+        skill3Desc: "Génération automatisée de tests unitaires, d'intégration et E2E.",
+        skill4: "Auditeur de sécurité",
+        skill4Desc: "Analyse des vulnérabilités en temps réel et suggestions de correctifs.",
+        skill5: "Héros DevOps",
+        skill5Desc: "Optimisation du pipeline CI/CD et compétences de déploiement cloud.",
+        skill6: "Générateur de docs",
+        skill6Desc: "Documentation automatique de haute qualité à partir de l'analyse du code."
+      },
+      philosophy: {
+        title: "PHILOSOPHIE",
+        quote: "« Nous pensons que les agents IA ne sont pas seulement des assistants, mais des contributeurs principaux. Superpowers fournit le cadre nécessaire pour rendre cette contribution fiable, évolutive et puissante. »",
+        tags: ["Open Source", "Agent-First", "Axé sur la communauté"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Un framework de compétences agentiques et une méthodologie de développement logiciel qui fonctionnent vraiment.
+
+Superpowers donne à vos agents IA une boîte à outils standardisée pour gérer des tâches d'ingénierie complexes avec précision.
+
+## Pourquoi Superpowers ?
+
+Les agents IA sont puissants, mais ils manquent souvent des outils spécifiques et fiables nécessaires à l'ingénierie logicielle de production. Superpowers comble cette lacune en fournissant :
+
+- **Compétences standardisées** : Une bibliothèque de compétences pré-construites et auditées.
+- **Méthodologie agentique** : Un flux de travail conçu pour le développement axé sur l'IA.
+- **Compatibilité universelle** : Fonctionne avec Claude Code, Cursor, et plus encore.
+
+## Installation
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Activez via la Marketplace de plugins.
+
+### Configuration manuelle
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Compétences de base
+
+### 1. Architecte de code
+Échafaudage de projet avancé et conception structurelle.
+
+### 2. Maître Git
+Rebase complexe et résolution de conflits de fusion.
+
+### 3. Ingénieur de test
+Génération automatisée de tests unitaires et E2E.
+
+## Utilisation
+
+Initialisez Superpowers dans votre projet :
+\`\`\`bash
+sp init
+\`\`\`
+
+Vérifiez votre installation :
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Philosophie
+
+Nous pensons que les agents IA ne sont pas seulement des assistants, mais des contributeurs principaux. Superpowers fournit le cadre nécessaire pour rendre cette contribution fiable, évolutive et puissante.
+`
+      },
+      footer: {
+        copy: "© 2026 Projet Superpowers. Open source sous licence MIT.",
+        download: "Télécharger",
+        disclaimer: "Avertissement : Ce site est une référence au dépôt GitHub Superpowers et n'est pas affilié à l'auteur original."
+      }
+    }
+  },
+  de: {
+    translation: {
+      nav: {
+        howItWorks: "Funktionsweise",
+        features: "Funktionen",
+        installation: "Installation",
+        workflow: "Workflow",
+        skills: "Skills",
+        docs: "Docs",
+        getStarted: "Loslegen"
+      },
+      hero: {
+        badge: "v2.0: Das Agentic Skills Framework",
+        title1: "SUPERPOWERS:",
+        title2: "AGENTIC SKILLS",
+        title3: "DIE FUNKTIONIEREN",
+        desc: "Ein Agentic Skills Framework und eine Softwareentwicklungsmethodik, die tatsächlich funktionieren. Superpowers bietet Ihren KI-Agenten ein standardisiertes Toolkit, um komplexe Engineering-Aufgaben mit Präzision zu bewältigen.",
+        installBtn: "Jetzt installieren",
+        githubBtn: "Star auf GitHub"
+      },
+      howItWorks: {
+        title: "WIE ES FUNKTIONIERT",
+        subtitle: "Superpowers schließt die Lücke zwischen rohem KI-Potenzial und produktionsreifem Engineering.",
+        step1Title: "Standardisierte Skills",
+        step1Desc: "Eine Bibliothek mit vorgefertigten, geprüften Skills, die Agenten aufrufen können, um spezifische, hochwertige Aufgaben auszuführen.",
+        step2Title: "Agentic Methodology",
+        step2Desc: "Eine Softwareentwicklungsmethodik, die für eine Welt konzipiert wurde, in der KI-Agenten die Hauptbeitragenden sind.",
+        step3Title: "Universelle Kompatibilität",
+        step3Desc: "Funktioniert mit allen gängigen KI-Codierungstools und stellt sicher, dass Ihre Agenten überall die gleichen \"Superpowers\" haben."
+      },
+      features: {
+        title: "FÜR DEN MODERNEN ENTWICKLER GEBAUT",
+        desc: "Verschwenden Sie keine Zeit mehr mit sich wiederholenden Aufgaben. Superpowers bietet eine kuratierte Sammlung von Dienstprogrammen, die sich nahtlos in Ihre Shell integrieren lassen.",
+        stats: "Von über 2.000 Entwicklern genutzt",
+        methodologyTag: "METHODIK",
+        methodologyTitle: "Agentic Skills Framework",
+        methodologyDesc: "Superpowers ist nicht nur ein Tool; es ist eine Methodik. Es bietet eine strukturierte Möglichkeit, KI-Agenten die spezifischen Fähigkeiten zu geben, die sie für komplexe Softwareentwicklungsaufgaben benötigen.",
+        methodologyList: ["Standardisierte Skill-Bibliothek", "Agent-First-Design", "Skalierbare Methodik"],
+        multiPlatformTitle: "Multi-Plattform",
+        multiPlatformDesc: "Native Unterstützung für Claude Code, Cursor, Copilot und Gemini CLI.",
+        methodologyFirstTitle: "Methodik zuerst",
+        methodologyFirstDesc: "Auf der Philosophie aufgebaut, KI-Agenten zuverlässiger und fähiger zu machen."
+      },
+      installation: {
+        title: "INSTALLATION & SETUP",
+        subtitle: "Superpowers unterstützt alle gängigen KI-Entwicklungsumgebungen.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Installieren Sie direkt über den offiziellen Marketplace oder den Community-Plugin-Marketplace.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Aktivieren Sie Superpowers in Cursor über den Plugin-Marketplace für eine nahtlose Agentenintegration.",
+        cliTitle: "CLI-Tools",
+        cliDesc: "Native Unterstützung für GitHub Copilot CLI, Gemini CLI, Codex und OpenCode.",
+        verifyTitle: "Überprüfen Sie Ihre Superpowers",
+        verifyDesc: "Überprüfen Sie immer Ihre Installation, um sicherzustellen, dass alle Skills korrekt verknüpft und für Ihre Agenten bereit sind."
+      },
+      comparison: {
+        title: "WARUM SUPERPOWERS WÄHLEN?",
+        oldWay: "Der alte Weg",
+        oldList: [
+          "Unzuverlässiges Verhalten von KI-Agenten",
+          "Manuelles Prompt-Engineering für jede Aufgabe",
+          "Fragmentierte Entwickler-Workflows",
+          "Mangel an standardisierten KI-Toolsets"
+        ],
+        newWay: "Der Superpowers-Weg",
+        newList: [
+          "Vorhersehbare, leistungsstarke Agenten-Skills",
+          "Standardisierte Methodik für die KI-Entwicklung",
+          "Nahtlose Integration über mehrere KI-Plattformen hinweg",
+          "Skalierbares Framework für die Teamzusammenarbeit"
+        ]
+      },
+      workflow: {
+        title: "DER BASIS-WORKFLOW",
+        subtitle: "Einfach, wiederholbar und leistungsstark.",
+        step1: "Initialisieren",
+        step1Desc: "Führen Sie 'sp init' im Projektverzeichnis aus, um die Umgebung vorzubereiten.",
+        step2: "Skills auswählen",
+        step2Desc: "Wählen Sie aus der Bibliothek oder erstellen Sie benutzerdefinierte Skills für Ihren Agenten.",
+        step3: "Befähigen",
+        step3Desc: "Agenten nutzen die Skills automatisch, um komplexe Aufgaben zu lösen.",
+        step4: "Iterieren",
+        step4Desc: "Verfeinern Sie Skills, während Ihr Projekt wächst und sich Agenten weiterentwickeln."
+      },
+      skills: {
+        title: "SKILLS-BIBLIOTHEK",
+        badge: "50+ Skills & steigend",
+        skill1: "Code-Architekt",
+        skill1Desc: "Fortgeschrittene Projekt-Scaffolding- und Strukturdesign-Skills.",
+        skill2: "Git-Master",
+        skill2Desc: "Komplexes Rebase, Auflösung von Merge-Konflikten und Verlaufshistorie.",
+        skill3: "Test-Ingenieur",
+        skill3Desc: "Automatisierte Unit-, Integrations- und E2E-Testgenerierung.",
+        skill4: "Sicherheitsprüfer",
+        skill4Desc: "Echtzeit-Schwachstellenscan und Patch-Vorschläge.",
+        skill5: "DevOps-Held",
+        skill5Desc: "CI/CD-Pipeline-Optimierung und Cloud-Deployment-Skills.",
+        skill6: "Docs-Generator",
+        skill6Desc: "Automatische, hochwertige Dokumentation aus der Codeanalyse."
+      },
+      philosophy: {
+        title: "PHILOSOPHIE",
+        quote: "„Wir glauben, dass KI-Agenten nicht nur Assistenten, sondern Hauptbeitragende sind. Superpowers bietet den Rahmen, um diesen Beitrag zuverlässig, skalierbar und leistungsstark zu machen.“",
+        tags: ["Open Source", "Agent-First", "Community-getrieben"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Ein Agentic Skills Framework und eine Softwareentwicklungsmethodik, die tatsächlich funktionieren.
+
+Superpowers bietet Ihren KI-Agenten ein standardisiertes Toolkit, um komplexe Engineering-Aufgaben mit Präzision zu bewältigen.
+
+## Warum Superpowers?
+
+KI-Agenten sind leistungsstark, aber ihnen fehlen oft die spezifischen, zuverlässigen Werkzeuge, die für produktionsreifes Software-Engineering erforderlich sind. Superpowers schließt diese Lücke durch:
+
+- **Standardisierte Skills**: Eine Bibliothek mit vorgefertigten, geprüften Skills.
+- **Agentic Methodology**: Ein Workflow, der für die KI-first-Entwicklung konzipiert wurde.
+- **Universelle Kompatibilität**: Funktioniert mit Claude Code, Cursor und mehr.
+
+## Installation
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Über den Plugin-Marketplace aktivieren.
+
+### Manuelle Einrichtung
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Kern-Skills
+
+### 1. Code-Architekt
+Fortgeschrittenes Projekt-Scaffolding und Strukturdesign.
+
+### 2. Git-Master
+Komplexes Rebase und Auflösung von Merge-Konflikten.
+
+### 3. Test-Ingenieur
+Automatisierte Unit- und E2E-Testgenerierung.
+
+## Verwendung
+
+Initialisieren Sie Superpowers in Ihrem Projekt:
+\`\`\`bash
+sp init
+\`\`\`
+
+Überprüfen Sie Ihre Installation:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Philosophie
+
+Wir glauben, dass KI-Agenten nicht nur Assistenten, sondern Hauptbeitragende sind. Superpowers bietet den Rahmen, um diesen Beitrag zuverlässig, skalierbar und leistungsstark zu machen.
+`
+      },
+      footer: {
+        copy: "© 2026 Superpowers-Projekt. Open Source unter MIT-Lizenz.",
+        download: "Download",
+        disclaimer: "Haftungsausschluss: Diese Seite ist eine Referenz auf das Superpowers GitHub-Repository und steht in keiner Verbindung zum ursprünglichen Autor."
+      }
+    }
+  },
+  es: {
+    translation: {
+      nav: {
+        howItWorks: "Cómo funciona",
+        features: "Características",
+        installation: "Instalación",
+        workflow: "Flujo de trabajo",
+        skills: "Habilidades",
+        docs: "Docs",
+        getStarted: "Empezar"
+      },
+      hero: {
+        badge: "v2.0: El framework de habilidades agenticas",
+        title1: "SUPERPOWERS:",
+        title2: "HABILIDADES",
+        title3: "QUE FUNCIONAN",
+        desc: "Un framework de habilidades agenticas y una metodología de desarrollo de software que realmente funcionan. Superpowers le da a sus agentes de IA un conjunto de herramientas estandarizado para manejar tareas de ingeniería complejas con precisión.",
+        installBtn: "Instalar ahora",
+        githubBtn: "Star en GitHub"
+      },
+      howItWorks: {
+        title: "CÓMO FUNCIONA",
+        subtitle: "Superpowers cierra la brecha entre el potencial bruto de la IA y la ingeniería lista para producción.",
+        step1Title: "Habilidades estandarizadas",
+        step1Desc: "Una biblioteca de habilidades pre-construidas y auditadas que los agentes pueden invocar para realizar tareas específicas de alto valor.",
+        step2Title: "Metodología agentica",
+        step2Desc: "Una metodología de desarrollo de software diseñada para un mundo donde los agentes de IA son los principales colaboradores.",
+        step3Title: "Compatibilidad universal",
+        step3Desc: "Funciona en todas las principales herramientas de codificación de IA, lo que garantiza que sus agentes tengan los mismos \"Superpowers\" en todas partes."
+      },
+      features: {
+        title: "CONSTRUIDO PARA EL DESARROLLADOR MODERNO",
+        desc: "Deje de perder tiempo en tareas repetitivas. Superpowers ofrece una colección seleccionada de utilidades que se integran perfectamente en su shell.",
+        stats: "Utilizado por más de 2000 desarrolladores",
+        methodologyTag: "METODOLOGÍA",
+        methodologyTitle: "Framework de habilidades agenticas",
+        methodologyDesc: "Superpowers no es solo una herramienta; es una metodología. Proporciona una forma estructurada de dar a los agentes de IA las habilidades específicas que necesitan para manejar tareas complejas de desarrollo de software.",
+        methodologyList: ["Biblioteca de habilidades estandarizada", "Diseño centrado en el agente", "Metodología escalable"],
+        multiPlatformTitle: "Multiplataforma",
+        multiPlatformDesc: "Soporte nativo para Claude Code, Cursor, Copilot y Gemini CLI.",
+        methodologyFirstTitle: "La metodología primero",
+        methodologyFirstDesc: "Construido sobre una filosofía de hacer que los agentes de IA sean más confiables y capaces."
+      },
+      installation: {
+        title: "INSTALACIÓN Y CONFIGURACIÓN",
+        subtitle: "Superpowers es compatible con todos los principales entornos de desarrollo de IA.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Instale directamente desde el Marketplace oficial o el Marketplace de complementos de la comunidad.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Habilite Superpowers en Cursor a través del Marketplace de complementos para una integración agentica perfecta.",
+        cliTitle: "Herramientas CLI",
+        cliDesc: "Soporte nativo para GitHub Copilot CLI, Gemini CLI, Codex y OpenCode.",
+        verifyTitle: "Verifique sus Superpowers",
+        verifyDesc: "Verifique siempre su instalación para asegurarse de que todas las habilidades estén correctamente vinculadas y listas para sus agentes."
+      },
+      comparison: {
+        title: "¿POR QUÉ ELEGIR SUPERPOWERS?",
+        oldWay: "La vieja escuela",
+        oldList: [
+          "Comportamiento poco confiable de los agentes de IA",
+          "Ingeniería de prompts manual para cada tarea",
+          "Flujos de trabajo de desarrollo fragmentados",
+          "Falta de conjuntos de herramientas de IA estandarizados"
+        ],
+        newWay: "El estilo Superpowers",
+        newList: [
+          "Habilidades de agente predecibles y de alto rendimiento",
+          "Metodología estandarizada para el desarrollo de IA",
+          "Integración perfecta en múltiples plataformas de IA",
+          "Framework escalable para la colaboración en equipo"
+        ]
+      },
+      workflow: {
+        title: "EL FLUJO DE TRABAJO BÁSICO",
+        subtitle: "Simple, repetible y potente.",
+        step1: "Inicializar",
+        step1Desc: "Ejecute 'sp init' en la raíz de su proyecto para preparar el entorno.",
+        step2: "Seleccionar habilidades",
+        step2Desc: "Elija de la biblioteca o cree habilidades personalizadas para su agente.",
+        step3: "Empoderar",
+        step3Desc: "Los agentes utilizan automáticamente las habilidades para resolver tareas complejas.",
+        step4: "Iterar",
+        step4Desc: "Refine las habilidades a medida que su proyecto crece y los agentes evolucionan."
+      },
+      skills: {
+        title: "BIBLIOTECA DE HABILIDADES",
+        badge: "Más de 50 habilidades y sumando",
+        skill1: "Arquitecto de código",
+        skill1Desc: "Habilidades avanzadas de andamiaje de proyectos y diseño estructural.",
+        skill2: "Maestro Git",
+        skill2Desc: "Rebase complejo, resolución de conflictos de fusión y gestión de historial.",
+        skill3: "Ingeniero de pruebas",
+        skill3Desc: "Generación automatizada de pruebas unitarias, de integración y E2E.",
+        skill4: "Auditor de seguridad",
+        skill4Desc: "Escaneo de vulnerabilidades en tiempo real y sugerencias de parches.",
+        skill5: "Héroe DevOps",
+        skill5Desc: "Optimización de la canalización de CI/CD y habilidades de despliegue en la nube.",
+        skill6: "Generador de docs",
+        skill6Desc: "Documentación automática de alta calidad a partir del análisis de código."
+      },
+      philosophy: {
+        title: "FILOSOFÍA",
+        quote: "«Creemos que los agentes de IA no son solo asistentes, sino colaboradores principales. Superpowers proporciona el marco para que esa contribución sea confiable, escalable y poderosa».",
+        tags: ["Código abierto", "Primero el agente", "Impulsado por la comunidad"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Un framework de habilidades agenticas y una metodología de desarrollo de software que realmente funcionan.
+
+Superpowers le da a sus agentes de IA un conjunto de herramientas estandarizado para manejar tareas de ingeniería complejas con precisión.
+
+## ¿Por qué Superpowers?
+
+Los agentes de IA son poderosos, pero a menudo carecen de las herramientas específicas y confiables necesarias para la ingeniería de software de producción. Superpowers cierra esta brecha al proporcionar:
+
+- **Habilidades estandarizadas**: Una biblioteca de habilidades pre-construidas y auditadas.
+- **Metodología agentica**: Un flujo de trabajo diseñado para el desarrollo centrado en la IA.
+- **Compatibilidad universal**: Funciona con Claude Code, Cursor y más.
+
+## Instalación
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Habilítelo a través del Marketplace de complementos.
+
+### Configuración manual
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Habilidades principales
+
+### 1. Arquitecto de código
+Andamiaje de proyectos avanzado y diseño estructural.
+
+### 2. Maestro Git
+Rebase complejo y resolución de conflictos de fusión.
+
+### 3. Ingeniero de pruebas
+Generación automatizada de pruebas unitarias y E2E.
+
+## Uso
+
+Inicialice Superpowers en su proyecto:
+\`\`\`bash
+sp init
+\`\`\`
+
+Verifique su instalación:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Filosofía
+
+Creemos que los agentes de IA no son solo asistentes, sino colaboradores principales. Superpowers proporciona el marco para que esa contribución sea confiable, escalable y poderosa.
+`
+      },
+      footer: {
+        copy: "© 2026 Proyecto Superpowers. Código abierto bajo licencia MIT.",
+        download: "Descargar",
+        disclaimer: "Descargo de responsabilidad: Este sitio es una referencia al repositorio de GitHub de Superpowers y no está afiliado al autor original."
+      }
+    }
+  },
+  pt: {
+    translation: {
+      nav: {
+        howItWorks: "Como funciona",
+        features: "Recursos",
+        installation: "Instalação",
+        workflow: "Fluxo de trabalho",
+        skills: "Habilidades",
+        docs: "Docs",
+        getStarted: "Começar"
+      },
+      hero: {
+        badge: "v2.0: O framework de habilidades agenticas",
+        title1: "SUPERPOWERS:",
+        title2: "HABILIDADES",
+        title3: "QUE FUNCIONAM",
+        desc: "Um framework de habilidades agenticas e metodologia de desenvolvimento de software que realmente funcionam. O Superpowers oferece aos seus agentes de IA um kit de ferramentas padronizado para lidar com tarefas de engenharia complexas com precisão.",
+        installBtn: "Instalar agora",
+        githubBtn: "Star no GitHub"
+      },
+      howItWorks: {
+        title: "COMO FUNCIONA",
+        subtitle: "O Superpowers preenche a lacuna entre o potencial bruto da IA e a engenharia pronta para produção.",
+        step1Title: "Habilidades padronizadas",
+        step1Desc: "Uma biblioteca de habilidades pré-construídas e auditadas que os agentes podem invocar para realizar tarefas específicas de alto valor.",
+        step2Title: "Metodologia agentica",
+        step2Desc: "Uma metodologia de desenvolvimento de software projetada para um mundo onde os agentes de IA são os principais colaboradores.",
+        step3Title: "Compatibilidade universal",
+        step3Desc: "Funciona em todas as principais ferramentas de codificação de IA, garantindo que seus agentes tenham os mesmos \"Superpowers\" em todos os lugares."
+      },
+      features: {
+        title: "CONSTRUÍDO PARA O DESENVOLVEDOR MODERNO",
+        desc: "Pare de perder tempo com tarefas repetitivas. O Superpowers oferece uma coleção selecionada de utilitários que se integram perfeitamente ao seu shell.",
+        stats: "Usado por mais de 2.000 desenvolvedores",
+        methodologyTag: "METODOLOGIA",
+        methodologyTitle: "Framework de habilidades agenticas",
+        methodologyDesc: "O Superpowers não é apenas uma ferramenta; é uma metodologia. Ele fornece uma maneira estruturada de dar aos agentes de IA as habilidades específicas de que precisam para lidar com tarefas complexas de desenvolvimento de software.",
+        methodologyList: ["Biblioteca de habilidades padronizada", "Design focado no agente", "Metodologia escalável"],
+        multiPlatformTitle: "Multiplataforma",
+        multiPlatformDesc: "Suporte nativo para Claude Code, Cursor, Copilot e Gemini CLI.",
+        methodologyFirstTitle: "Metodologia primeiro",
+        methodologyFirstDesc: "Construído sobre uma filosofia de tornar os agentes de IA mais confiáveis e capazes."
+      },
+      installation: {
+        title: "INSTALAÇÃO E CONFIGURAÇÃO",
+        subtitle: "O Superpowers suporta todos os principais ambientes de desenvolvimento de IA.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Instale diretamente do Marketplace oficial ou do Marketplace de plugins da comunidade.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Ative o Superpowers no Cursor via Marketplace de plugins para uma integração agentica perfeita.",
+        cliTitle: "Ferramentas CLI",
+        cliDesc: "Suporte nativo para GitHub Copilot CLI, Gemini CLI, Codex e OpenCode.",
+        verifyTitle: "Verifique seus Superpowers",
+        verifyDesc: "Sempre verifique sua instalação para garantir que todas as habilidades estejam vinculadas corretamente e prontas para seus agentes."
+      },
+      comparison: {
+        title: "POR QUE ESCOLHER O SUPERPOWERS?",
+        oldWay: "O jeito antigo",
+        oldList: [
+          "Comportamento não confiável do agente de IA",
+          "Engenharia de prompt manual para cada tarefa",
+          "Fluxos de trabalho de desenvolvimento fragmentados",
+          "Falta de conjuntos de ferramentas de IA padronizados"
+        ],
+        newWay: "O jeito Superpowers",
+        newList: [
+          "Habilidades de agente previsíveis e de alto desempenho",
+          "Metodologia padronizada para o desenvolvimento de IA",
+          "Integração perfeita em várias plataformas de IA",
+          "Framework escalável para colaboração em equipe"
+        ]
+      },
+      workflow: {
+        title: "O FLUXO DE TRABALHO BÁSICO",
+        subtitle: "Simples, repetível e poderoso.",
+        step1: "Inicializar",
+        step1Desc: "Execute 'sp init' na raiz do seu projeto para preparar o ambiente.",
+        step2: "Selecionar habilidades",
+        step2Desc: "Escolha na biblioteca ou crie habilidades personalizadas para seu agente.",
+        step3: "Empoderar",
+        step3Desc: "Os agentes usam automaticamente as habilidades para resolver tarefas complexas.",
+        step4: "Iterar",
+        step4Desc: "Refine as habilidades à medida que seu projeto cresce e os agentes evoluem."
+      },
+      skills: {
+        title: "BIBLIOTECA DE HABILIDADES",
+        badge: "Mais de 50 habilidades e contando",
+        skill1: "Arquiteto de código",
+        skill1Desc: "Habilidades avançadas de scaffolding de projeto e design estrutural.",
+        skill2: "Mestre Git",
+        skill2Desc: "Rebase complexo, resolução de conflitos de merge e gerenciamento de histórico.",
+        skill3: "Engenheiro de testes",
+        skill3Desc: "Geração automatizada de testes unitários, de integração e E2E.",
+        skill4: "Auditor de segurança",
+        skill4Desc: "Varredura de vulnerabilidades em tempo real e sugestões de patches.",
+        skill5: "Herói DevOps",
+        skill5Desc: "Otimização de pipeline CI/CD e habilidades de implantação em nuvem.",
+        skill6: "Gerador de docs",
+        skill6Desc: "Documentação automática de alta qualidade a partir da análise de código."
+      },
+      philosophy: {
+        title: "FILOSOFIA",
+        quote: "“Acreditamos que os agentes de IA não são apenas assistentes, mas colaboradores principais. O Superpowers fornece a estrutura para tornar essa contribuição confiável, escalável e poderosa.”",
+        tags: ["Código aberto", "Primeiro o agente", "Impulsionado pela comunidade"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Um framework de habilidades agenticas e uma metodologia de desenvolvimento de software que realmente funcionam.
+
+O Superpowers oferece aos seus agentes de IA um kit de ferramentas padronizado para lidar com tarefas de engenharia complexas com precisão.
+
+## Por que Superpowers?
+
+Os agentes de IA são poderosos, mas muitas vezes carecem das ferramentas específicas e confiáveis necessárias para a engenharia de software de produção. O Superpowers preenche essa lacuna ao fornecer:
+
+- **Habilidades padronizadas**: Uma biblioteca de habilidades pré-construídas e auditadas.
+- **Metodologia agentica**: Um fluxo de trabalho projetado para o desenvolvimento focado em IA.
+- **Compatibilidade universal**: Funciona com Claude Code, Cursor e muito mais.
+
+## Instalação
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Ative via Marketplace de plugins.
+
+### Configuração manual
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Habilidades principais
+
+### 1. Arquiteto de código
+Scaffolding de projeto avançado e design estrutural.
+
+### 2. Mestre Git
+Rebase complexo e resolução de conflitos de merge.
+
+### 3. Engenheiro de testes
+Geração automatizada de testes unitários e E2E.
+
+## Uso
+
+Inicialize o Superpowers em seu projeto:
+\`\`\`bash
+sp init
+\`\`\`
+
+Verifique sua instalação:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Filosofia
+
+Acreditamos que os agentes de IA não são apenas assistentes, mas colaboradores principais. O Superpowers fornece a estrutura para tornar essa contribuição confiável, escalável e poderosa.
+`
+      },
+      footer: {
+        copy: "© 2026 Projeto Superpowers. Código aberto sob licença MIT.",
+        download: "Baixar",
+        disclaimer: "Isenção de responsabilidade: Este site é uma referência ao repositório GitHub do Superpowers e não é afiliato ao autor original."
+      }
+    }
+  },
+  ru: {
+    translation: {
+      nav: {
+        howItWorks: "Как это работает",
+        features: "Функции",
+        installation: "Установка",
+        workflow: "Процесс",
+        skills: "Навыки",
+        docs: "Доки",
+        getStarted: "Начать"
+      },
+      hero: {
+        badge: "v2.0: Фреймворк агентских навыков",
+        title1: "SUPERPOWERS:",
+        title2: "АГЕНТСКИЕ НАВЫКИ,",
+        title3: "КОТОРЫЕ РАБОТАЮТ",
+        desc: "Фреймворк агентских навыков и методология разработки ПО, которые действительно работают. Superpowers дает вашим ИИ-агентам стандартизированный инструментарий для точного решения сложных инженерных задач.",
+        installBtn: "Установить сейчас",
+        githubBtn: "Звезда на GitHub"
+      },
+      howItWorks: {
+        title: "КАК ЭТО РАБОТАЕТ",
+        subtitle: "Superpowers устраняет разрыв между сырым потенциалом ИИ и готовой к производству инженерией.",
+        step1Title: "Стандартизированные навыки",
+        step1Desc: "Библиотека готовых, проверенных навыков, которые агенты могут вызывать для выполнения конкретных высокоэффективных задач.",
+        step2Title: "Агентская методология",
+        step2Desc: "Методология разработки ПО, разработанная для мира, где ИИ-агенты являются основными участниками.",
+        step3Title: "Универсальная совместимость",
+        step3Desc: "Работает во всех основных инструментах кодирования ИИ, гарантируя, что ваши агенты везде имеют одинаковые «суперсилы»."
+      },
+      features: {
+        title: "СОЗДАНО ДЛЯ СОВРЕМЕННЫХ РАЗРАБОТЧИКОВ",
+        desc: "Перестаньте тратить время на повторяющиеся задачи. Superpowers предлагает тщательно подобранную коллекцию утилит, которые легко интегрируются в вашу оболочку.",
+        stats: "Используется более чем 2000 разработчиками",
+        methodologyTag: "МЕТОДОЛОГИЯ",
+        methodologyTitle: "Фреймворк агентских навыков",
+        methodologyDesc: "Superpowers — это не просто инструмент, это методология. Она предлагает структурированный способ наделить ИИ-агентов специфическими навыками, необходимыми для решения сложных задач по разработке ПО.",
+        methodologyList: ["Стандартная библиотека навыков", "Дизайн, ориентированный на агентов", "Масштабируемая методология"],
+        multiPlatformTitle: "Мультиплатформенность",
+        multiPlatformDesc: "Нативная поддержка Claude Code, Cursor, Copilot и Gemini CLI.",
+        methodologyFirstTitle: "Методология прежде всего",
+        methodologyFirstDesc: "Построено на философии повышения надежности и возможностей ИИ-агентов."
+      },
+      installation: {
+        title: "УСТАНОВКА И НАСТРОЙКА",
+        subtitle: "Superpowers поддерживает все основные среды разработки ИИ.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Установите напрямую из официального магазина или магазина плагинов сообщества.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Включите Superpowers в Cursor через магазин плагинов для бесшовной интеграции агентов.",
+        cliTitle: "Инструменты CLI",
+        cliDesc: "Нативная поддержка GitHub Copilot CLI, Gemini CLI, Codex и OpenCode.",
+        verifyTitle: "Проверьте свои суперсилы",
+        verifyDesc: "Всегда проверяйте установку, чтобы убедиться, что все навыки правильно связаны и готовы для ваших агентов."
+      },
+      comparison: {
+        title: "ПОЧЕМУ ВЫБИРАЮТ SUPERPOWERS?",
+        oldWay: "Старый подход",
+        oldList: [
+          "Непредсказуемое поведение ИИ-агентов",
+          "Ручной промпт-инжиниринг для каждой задачи",
+          "Фрагментированные рабочие процессы",
+          "Отсутствие стандартизированных наборов инструментов ИИ"
+        ],
+        newWay: "Подход Superpowers",
+        newList: [
+          "Предсказуемые и высокопроизводительные навыки агентов",
+          "Стандартизированная методология разработки ИИ",
+          "Бесшовная интеграция на нескольких ИИ-платформах",
+          "Масштабируемая среда для командной работы"
+        ]
+      },
+      workflow: {
+        title: "БАЗОВЫЙ ПРОЦЕСС",
+        subtitle: "Просто, повторяемо и мощно.",
+        step1: "Инициализация",
+        step1Desc: "Запустите 'sp init' в корне вашего проекта, чтобы подготовить среду.",
+        step2: "Выбор навыков",
+        step2Desc: "Выберите из библиотеки или создайте собственные навыки для своего агента.",
+        step3: "Расширение возможностей",
+        step3Desc: "Агенты автоматически используют навыки для решения сложных задач.",
+        step4: "Итерация",
+        step4Desc: "Совершенствуйте навыки по мере роста вашего проекта и развития агентов."
+      },
+      skills: {
+        title: "БИБЛИОТЕКА НАВЫКОВ",
+        badge: "50+ навыков и это не предел",
+        skill1: "Архитектор кода",
+        skill1Desc: "Продвинутые навыки создания каркаса проекта и структурного проектирования.",
+        skill2: "Мастер Git",
+        skill2Desc: "Сложный rebase, разрешение конфликтов слияния и управление историей.",
+        skill3: "Инженер по тестированию",
+        skill3Desc: "Автоматизированная генерация модульных, интеграционных и E2E тестов.",
+        skill4: "Аудитор безопасности",
+        skill4Desc: "Сканирование уязвимостей в реальном времени и предложения по исправлению.",
+        skill5: "Герой DevOps",
+        skill5Desc: "Оптимизация CI/CD конвейера и навыки облачного развертывания.",
+        skill6: "Генератор доков",
+        skill6Desc: "Автоматическая высококачественная документация на основе анализа кода."
+      },
+      philosophy: {
+        title: "ФИЛОСОФИЯ",
+        quote: "«Мы верим, что ИИ-агенты — это не просто помощники, а основные участники процесса. Superpowers предоставляет основу для того, чтобы сделать этот вклад надежным, масштабируемым и мощным».",
+        tags: ["Open Source", "Сначала агент", "Движимо сообществом"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Фреймворк агентских навыков и методология разработки ПО, которые действительно работают.
+
+Superpowers дает вашим ИИ-агентам стандартизированный инструментарий для точного решения сложных инженерных задач.
+
+## Почему Superpowers?
+
+ИИ-агенты мощны, но им часто не хватает специфических, надежных инструментов, необходимых для разработки программного обеспечения промышленного уровня. Superpowers устраняет этот разрыв, предоставляя:
+
+- **Стандартизированные навыки**: Библиотека готовых, проверенных навыков.
+- **Агентская методология**: Рабочий процесс, разработанный для разработки в первую очередь на основе ИИ.
+- **Универсальная совместимость**: Работает с Claude Code, Cursor и другими.
+
+## Установка
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Включите через магазин плагинов.
+
+### Ручная настройка
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Основные навыки
+
+### 1. Архитектор кода
+Продвинутое создание каркаса проекта и структурное проектирование.
+
+### 2. Мастер Git
+Сложный rebase и разрешение конфликтов слияния.
+
+### 3. Инженер по тестированию
+Автоматизированная генерация модульных и E2E тестов.
+
+## Использование
+
+Инициализируйте Superpowers в своем проекте:
+\`\`\`bash
+sp init
+\`\`\`
+
+Проверьте установку:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Философия
+
+Мы верим, что ИИ-агенты — это не просто помощники, а основные участники процесса. Superpowers предоставляет основу для того, чтобы сделать этот вклад надежным, масштабируемым и мощным.
+`
+      },
+      footer: {
+        copy: "© 2026 Проект Superpowers. Открытый исходный код под лицензией MIT.",
+        download: "Скачать",
+        disclaimer: "Отказ от ответственности: Этот сайт является ссылкой на репозиторий Superpowers на GitHub и не связан с оригинальным автором."
+      }
+    }
+  },
+  it: {
+    translation: {
+      nav: {
+        howItWorks: "Come funziona",
+        features: "Caratteristiche",
+        installation: "Installazione",
+        workflow: "Workflow",
+        skills: "Skill",
+        docs: "Docs",
+        getStarted: "Inizia"
+      },
+      hero: {
+        badge: "v2.0: Il framework per le skill agentiche",
+        title1: "SUPERPOWERS:",
+        title2: "SKILL AGENTICHE",
+        title3: "CHE FUNZIONANO",
+        desc: "Un framework per le skill agentiche e una metodologia di sviluppo software che funzionano davvero. Superpowers offre ai tuoi agenti AI un toolkit standardizzato per gestire compiti di ingegneria complessi con precisionre.",
+        installBtn: "Installa ora",
+        githubBtn: "Star su GitHub"
+      },
+      howItWorks: {
+        title: "COME FUNZIONA",
+        subtitle: "Superpowers colma il divario tra il potenziale grezzo dell'IA e l'ingegneria pronta per la produzione.",
+        step1Title: "Skill standardizzate",
+        step1Desc: "Una libreria di skill pre-costruite e verificate che gli agenti possono richiamare per eseguire compiti specifici ad alto valore.",
+        step2Title: "Metodologia agentica",
+        step2Desc: "Una metodologia di sviluppo software progettata per un mondo in cui gli agenti AI sono i principali contributori.",
+        step3Title: "Compatibilità universale",
+        step3Desc: "Funziona su tutti i principali strumenti di codifica AI, garantendo che i tuoi agenti abbiano gli stessi \"Superpowers\" ovunque."
+      },
+      features: {
+        title: "COSTRUITO PER IL DEVELOPER MODERNO",
+        desc: "Smetti di perdere tempo in compiti ripetitivi. Superpowers offre una collezione curata di utility che si integrano perfettamente nella tua shell.",
+        stats: "Usato da oltre 2.000 sviluppatori",
+        methodologyTag: "METODOLOGIA",
+        methodologyTitle: "Framework per le skill agentiche",
+        methodologyDesc: "Superpowers non è solo uno strumento; è una metodologia. Fornisce un modo strutturato per dare agli agenti AI le skill specifiche di cui hanno bisogno per gestire compiti complessi di sviluppo software.",
+        methodologyList: ["Libreria di skill standardizzata", "Design incentrato sull'agente", "Metodologia scalabile"],
+        multiPlatformTitle: "Multipiattaforma",
+        multiPlatformDesc: "Supporto nativo per Claude Code, Cursor, Copilot e Gemini CLI.",
+        methodologyFirstTitle: "La metodologia prima di tutto",
+        methodologyFirstDesc: "Costruito su una filosofia volta a rendere gli agenti AI più affidabili e capaci."
+      },
+      installation: {
+        title: "INSTALLAZIONE E CONFIGURAZIONE",
+        subtitle: "Superpowers supporta tutti i principali ambienti di sviluppo AI.",
+        claudeTitle: "Claude Code",
+        claudeDesc: "Installa direttamente dal Marketplace ufficiale o dal Marketplace dei plugin della comunità.",
+        cursorTitle: "Cursor",
+        cursorDesc: "Abilita Superpowers in Cursor tramite il Marketplace dei plugin per un'integrazione agentica senza interruzioni.",
+        cliTitle: "Strumenti CLI",
+        cliDesc: "Supporto nativo per GitHub Copilot CLI, Gemini CLI, Codex e OpenCode.",
+        verifyTitle: "Verifica i tuoi Superpowers",
+        verifyDesc: "Verifica sempre la tua installazione per assicurarti che tutte le skill siano collegate correttamente e pronte per i tuoi agenti."
+      },
+      comparison: {
+        title: "PERCHÉ SCEGLIERE SUPERPOWERS?",
+        oldWay: "Il vecchio modo",
+        oldList: [
+          "Comportamento inaffidabile degli agenti AI",
+          "Prompt engineering manuale per ogni compito",
+          "Workflow di sviluppo frammentati",
+          "Mancanza di toolset AI standardizzati"
+        ],
+        newWay: "Il modo Superpowers",
+        newList: [
+          "Skill degli agenti prevedibili e ad alte prestazioni",
+          "Metodologia standardizzata per lo sviluppo AI",
+          "Integrazione perfetta su più piattaforme AI",
+          "Framework scalabile per la collaborazione in team"
+        ]
+      },
+      workflow: {
+        title: "IL WORKFLOW DI BASE",
+        subtitle: "Semplice, ripetibile e potente.",
+        step1: "Inizializza",
+        step1Desc: "Esegui 'sp init' nella root del tuo progetto per preparare l'ambiente.",
+        step2: "Seleziona le skill",
+        step2Desc: "Scegli dalla libreria o crea skill personalizzate per il tuo agente.",
+        step3: "Potenzia",
+        step3Desc: "Gli agenti utilizzano automaticamente le skill per risolvere compiti complessi.",
+        step4: "Itera",
+        step4Desc: "Affina le skill man mano che il tuo progetto cresce e gli agenti si evolvono."
+      },
+      skills: {
+        title: "LIBRERIA DELLE SKILL",
+        badge: "Oltre 50 skill e in aumento",
+        skill1: "Architetto del codice",
+        skill1Desc: "Skill avanzate di scaffolding del progetto e progettazione strutturale.",
+        skill2: "Maestro Git",
+        skill2Desc: "Rebase complesso, risoluzione dei conflitti di merge e gestione della cronologia.",
+        skill3: "Ingegnere dei test",
+        skill3Desc: "Generazione automatizzata di test unitari, di integrazione ed E2E.",
+        skill4: "Revisore della sicurezza",
+        skill4Desc: "Scansione delle vulnerabilità in tempo reale e suggerimenti per le patch.",
+        skill5: "Eroe DevOps",
+        skill5Desc: "Ottimizzazione della pipeline CI/CD e skill di distribuzione cloud.",
+        skill6: "Generatore di docs",
+        skill6Desc: "Documentazione automatica di alta qualità dall'analisi del codice."
+      },
+      philosophy: {
+        title: "FILOSOFIA",
+        quote: "«Crediamo che gli agenti AI non siano solo assistenti, ma contributori primari. Superpowers fornisce il framework per rendere tale contributo affidabile, scalabile e potente».",
+        tags: ["Open Source", "Agent-First", "Guidato dalla community"]
+      },
+      docs: {
+        content: `
+# SUPERPOWERS
+
+Un framework per le skill agentiche e una metodologia di sviluppo software che funzionano davvero.
+
+Superpowers offre ai tuoi agenti AI un toolkit standardizzato per gestire compiti di ingegneria complessi con precisione.
+
+## Perché Superpowers?
+
+Gli agenti AI sono potenti, ma spesso mancano degli strumenti specifici e affidabili necessari per l'ingegneria del software di produzione. Superpowers colma questo divario fornendo:
+
+- **Skill standardizzate**: Una libreria di skill pre-costruite e verificate.
+- **Metodologia agentica**: Un workflow progettato per lo sviluppo AI-first.
+- **Compatibilità universale**: Funziona con Claude Code, Cursor e altro ancora.
+
+## Installazione
+
+### Claude Code
+\`\`\`bash
+claude-code install superpowers
+\`\`\`
+
+### Cursor
+Abilita tramite il Marketplace dei plugin.
+
+### Configurazione manuale
+\`\`\`bash
+git clone https://github.com/obra/superpowers
+cd superpowers && ./install.sh
+\`\`\`
+
+## Skill principali
+
+### 1. Architetto del codice
+Scaffolding del progetto avanzato e progettazione strutturale.
+
+### 2. Maestro Git
+Rebase complesso e risoluzione dei conflitti di merge.
+
+### 3. Ingegnere dei test
+Generazione automatizzata di test unitari ed E2E.
+
+## Utilizzo
+
+Inizializza Superpowers nel tuo progetto:
+\`\`\`bash
+sp init
+\`\`\`
+
+Verifica la tua installazione:
+\`\`\`bash
+sp verify
+\`\`\`
+
+## Filosofia
+
+Crediamo che gli agenti AI non siano solo assistenti, ma contributori primari. Superpowers fornisce il framework per rendere tale contributo affidabile, scalabile e potente.
+`
+      },
+      footer: {
+        copy: "© 2026 Progetto Superpowers. Open source sotto licenza MIT.",
+        download: "Scarica",
+        disclaimer: "Dichiarazione di non responsabilità: Questo sito è un riferimento al repository GitHub di Superpowers e non è affiliato all'autore originale."
+      }
+    }
+  }
+};
+
+i18n
+  .use(LanguageDetector)
+  .use(initReactI18next)
+  .init({
+    resources,
+    fallbackLng: 'en',
+    interpolation: {
+      escapeValue: false
+    }
+  });
+
+export default i18n;

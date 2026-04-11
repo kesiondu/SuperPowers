@@ -1,21 +1,21 @@
-import { motion } from "motion/react";
-import { 
-  Zap, 
-  Terminal, 
-  Shield, 
-  Cpu, 
-  ArrowRight, 
-  Github, 
-  Star, 
-  Sparkles, 
-  CheckCircle2, 
-  XCircle,
-  Code2,
-  Command
-} from "lucide-react";
+import React from 'react';
+import { Github, Zap, Terminal, Shield, Cpu, ArrowRight, Code2, Command, Sparkles, CheckCircle2, XCircle } from 'lucide-react';
+import { motion } from 'motion/react';
+import { useTranslation } from 'react-i18next';
+import { Routes, Route, Link, useLocation } from 'react-router-dom';
+import Docs from './pages/Docs';
+import { LanguageSelector } from './components/LanguageSelector';
+import { Logo } from './components/Logo';
 
 const DoodleArrow = () => (
-  <svg width="100" height="60" viewBox="0 0 100 60" fill="none" className="absolute -bottom-12 -left-12 hidden lg:block text-foreground-dark opacity-40">
+  <svg 
+    width="100" 
+    height="60" 
+    viewBox="0 0 100 60" 
+    fill="none" 
+    className="absolute -bottom-12 -left-12 hidden lg:block text-foreground-dark opacity-40"
+    aria-hidden="true"
+  >
     <path d="M10 10C30 40 70 50 90 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" />
     <path d="M85 30L92 18L80 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
   </svg>
@@ -33,38 +33,60 @@ const FloatingSparkle = ({ className }: { className?: string }) => (
       ease: "easeInOut" 
     }}
     className={`absolute text-accent-lime ${className}`}
+    aria-hidden="true"
   >
     <Sparkles size={24} fill="currentColor" />
   </motion.div>
 );
 
 export default function App() {
+  const { t } = useTranslation();
+  const location = useLocation();
+
+  // Scroll to top on route change
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
+  return (
+    <Routes>
+      <Route path="/" element={<Home />} />
+      <Route path="/docs" element={<Docs />} />
+    </Routes>
+  );
+}
+
+const Home = () => {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen bg-white selection:bg-accent-lime selection:text-foreground-dark">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4" aria-label="Main Navigation">
         <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-2xl px-6 py-3">
-          <div className="flex items-center gap-2">
-            <div className="bg-accent-lime brutal-border rounded-lg p-1.5">
-              <Zap size={20} fill="currentColor" />
-            </div>
-            <span className="font-extrabold text-xl tracking-tight">SUPERPOWERS</span>
-          </div>
+          <Link to="/" className="flex items-center gap-3 no-underline text-foreground-dark group" aria-label="Superpowers Home">
+            <Logo size={20} />
+            <span className="font-extrabold text-xl tracking-tight group-hover:text-royal transition-colors">SUPERPOWERS</span>
+          </Link>
           
-          <div className="hidden md:flex items-center gap-8 font-semibold text-sm">
-            <a href="#features" className="hover:text-royal transition-colors">Features</a>
-            <a href="#cli" className="hover:text-royal transition-colors">CLI</a>
-            <a href="https://github.com/obra/superpowers#readme" target="_blank" rel="noopener noreferrer" className="hover:text-royal transition-colors">Docs</a>
+          <div className="hidden lg:flex items-center gap-6 font-semibold text-sm">
+            <a href="#how-it-works" className="hover:text-royal transition-colors">{t('nav.howItWorks')}</a>
+            <a href="#features" className="hover:text-royal transition-colors">{t('nav.features')}</a>
+            <a href="#cli" className="hover:text-royal transition-colors">{t('nav.installation')}</a>
+            <a href="#workflow" className="hover:text-royal transition-colors">{t('nav.workflow')}</a>
+            <a href="#skills" className="hover:text-royal transition-colors">{t('nav.skills')}</a>
+            <Link to="/docs" className="hover:text-royal transition-colors no-underline text-foreground-dark">{t('nav.docs')}</Link>
           </div>
 
           <div className="flex items-center gap-3">
+            <LanguageSelector />
             <a 
               href="https://github.com/obra/superpowers" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="p-2 brutal-border rounded-full hover:bg-bg-beige transition-colors"
+              aria-label="View on GitHub"
+              className="p-2 brutal-border rounded-full hover:bg-bg-beige transition-colors hidden sm:flex"
             >
-              <Github size={20} />
+              <Github size={20} aria-hidden="true" />
             </a>
             <a 
               href="https://github.com/obra/superpowers#getting-started"
@@ -72,13 +94,14 @@ export default function App() {
               rel="noopener noreferrer"
               className="brutal-btn-primary py-2 px-4 text-sm no-underline"
             >
-              Get Started
+              {t('nav.getStarted')}
             </a>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section */}
+      <main>
+        {/* Hero Section */}
       <section className="pt-32 pb-24 px-4 bg-bg-sky relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative">
           <FloatingSparkle className="top-0 left-10" />
@@ -91,7 +114,7 @@ export default function App() {
               className="inline-flex items-center gap-2 bg-white brutal-border rounded-full px-4 py-1.5 text-sm font-bold"
             >
               <span className="bg-accent-lime rounded-full px-2 py-0.5 text-[10px]">NEW</span>
-              v2.0 is now available with 50+ new scripts
+              {t('hero.badge')}
             </motion.div>
 
             <motion.h1 
@@ -100,23 +123,23 @@ export default function App() {
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[0.9]"
             >
-              AGENTIC SKILLS <br />
+              {t('hero.title1')} <br />
               <span className="text-royal relative">
-                THAT WORK
+                {t('hero.title2')}
                 <svg className="absolute -bottom-2 left-0 w-full h-3 text-accent-lime" viewBox="0 0 100 10" preserveAspectRatio="none">
                   <path d="M0 5 Q 25 0 50 5 T 100 5" stroke="currentColor" strokeWidth="4" fill="none" />
                 </svg>
               </span>
+              <br /> {t('hero.title3')}
             </motion.h1>
 
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="max-w-2xl mx-auto text-lg md:text-xl text-foreground-muted font-medium"
+              className="max-w-3xl mx-auto text-lg md:text-xl text-foreground-muted font-medium"
             >
-              Superpowers is an agentic skills framework and software development methodology. 
-              Give your AI agents the edge with a curated library of high-performance skills.
+              {t('hero.desc')}
             </motion.p>
 
             <motion.div 
@@ -131,7 +154,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="brutal-btn-primary text-lg px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-2 no-underline"
               >
-                Install Now <ArrowRight size={20} />
+                {t('hero.installBtn')} <ArrowRight size={20} />
               </a>
               <a 
                 href="https://github.com/obra/superpowers"
@@ -139,7 +162,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="brutal-btn-secondary text-lg px-8 py-4 w-full sm:w-auto flex items-center justify-center gap-2 no-underline"
               >
-                <Github size={20} /> Star on GitHub
+                <Github size={20} /> {t('hero.githubBtn')}
               </a>
             </motion.div>
           </div>
@@ -147,9 +170,9 @@ export default function App() {
           {/* Floating Feature Cards */}
           <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
-              { icon: <Terminal />, title: "Smart CLI", desc: "Intuitive commands that predict your next move." },
-              { icon: <Shield />, title: "Safe & Secure", desc: "Open source scripts you can trust and audit." },
-              { icon: <Cpu />, title: "Instant Setup", desc: "One command to rule them all. Zero config needed." }
+              { icon: <Terminal />, title: t('howItWorks.step1Title'), desc: t('howItWorks.step1Desc') },
+              { icon: <Shield />, title: t('howItWorks.step2Title'), desc: t('howItWorks.step2Desc') },
+              { icon: <Cpu />, title: t('howItWorks.step3Title'), desc: t('howItWorks.step3Desc') }
             ].map((card, i) => (
               <motion.div
                 key={i}
@@ -169,16 +192,70 @@ export default function App() {
         </div>
       </section>
 
+      {/* How it Works Section */}
+      <section id="how-it-works" className="py-24 px-4 bg-white border-y-2 border-foreground-dark">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{t('howItWorks.title')}</h2>
+            <p className="text-xl text-foreground-muted font-medium max-w-2xl mx-auto">
+              {t('howItWorks.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-8">
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-accent-lime brutal-border rounded-full flex items-center justify-center font-bold text-xl">1</div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{t('howItWorks.step1Title')}</h3>
+                  <p className="text-foreground-muted font-medium">{t('howItWorks.step1Desc')}</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-bg-sky brutal-border rounded-full flex items-center justify-center font-bold text-xl">2</div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{t('howItWorks.step2Title')}</h3>
+                  <p className="text-foreground-muted font-medium">{t('howItWorks.step2Desc')}</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <div className="flex-shrink-0 w-12 h-12 bg-bg-sage brutal-border rounded-full flex items-center justify-center font-bold text-xl">3</div>
+                <div>
+                  <h3 className="text-2xl font-bold mb-2">{t('howItWorks.step3Title')}</h3>
+                  <p className="text-foreground-muted font-medium">{t('howItWorks.step3Desc')}</p>
+                </div>
+              </div>
+            </div>
+            <div className="bg-bg-beige brutal-border rounded-3xl p-8 brutal-shadow relative">
+              <div className="bg-foreground-dark text-white p-6 rounded-2xl font-mono text-sm space-y-2">
+                <div className="text-accent-lime"># Superpowers in action</div>
+                <div className="flex gap-2">
+                  <span className="text-white/40">$</span>
+                  <span>sp run deploy-skill --name "auth-flow"</span>
+                </div>
+                <div className="text-white/60">
+                  <div>{">"} Analyzing project structure...</div>
+                  <div>{">"} Detected React + Firebase</div>
+                  <div>{">"} Injecting agentic auth skill...</div>
+                  <div className="text-accent-lime">{">"} Success! Agent now has Auth Superpowers.</div>
+                </div>
+              </div>
+              <FloatingSparkle className="-top-6 -right-6" />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Features Section */}
       <section id="features" className="py-24 px-4 bg-bg-sage">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row items-end justify-between gap-8 mb-16">
             <div className="max-w-2xl space-y-4">
               <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-                BUILT FOR THE <br /> MODERN DEVELOPER
+                {t('features.title')}
               </h2>
               <p className="text-lg text-foreground-muted font-medium">
-                Stop wasting time on repetitive tasks. Superpowers provides a curated collection of utilities that integrate seamlessly into your shell.
+                {t('features.desc')}
               </p>
             </div>
             <div className="bg-white brutal-border rounded-2xl p-4 flex items-center gap-4 brutal-shadow">
@@ -194,7 +271,7 @@ export default function App() {
                 ))}
               </div>
               <div className="text-sm font-bold">
-                Used by 2,000+ devs
+                {t('features.stats')}
               </div>
             </div>
           </div>
@@ -203,14 +280,14 @@ export default function App() {
             <div className="bg-white brutal-border rounded-3xl p-8 relative overflow-hidden group">
               <div className="relative z-10">
                 <div className="bg-royal text-white brutal-border rounded-full px-4 py-1 text-xs font-bold w-fit mb-6">
-                  METHODOLOGY
+                  {t('features.methodologyTag')}
                 </div>
-                <h3 className="text-3xl font-extrabold mb-4">Agentic Skills Framework</h3>
+                <h3 className="text-3xl font-extrabold mb-4">{t('features.methodologyTitle')}</h3>
                 <p className="text-foreground-muted font-medium mb-8">
-                  Superpowers isn't just a tool; it's a methodology. It provides a structured way to give AI agents the specific skills they need to handle complex software development tasks.
+                  {t('features.methodologyDesc')}
                 </p>
                 <div className="space-y-3">
-                  {["Standardized Skill Library", "Agent-First Design", "Scalable Methodology"].map((item, i) => (
+                  {(t('features.methodologyList', { returnObjects: true }) as string[]).map((item, i) => (
                     <div key={i} className="flex items-center gap-3 font-bold">
                       <div className="text-accent-lime bg-foreground-dark rounded-full p-0.5">
                         <CheckCircle2 size={16} fill="currentColor" />
@@ -226,21 +303,21 @@ export default function App() {
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
               <div className="brutal-card bg-accent-lime/10">
                 <Code2 className="mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-2">Skills Library</h4>
-                <p className="text-sm text-foreground-muted font-medium">A curated collection of agentic skills ready to be deployed in your workflow.</p>
+                <h4 className="text-xl font-bold mb-2">{t('skills.title')}</h4>
+                <p className="text-sm text-foreground-muted font-medium">{t('skills.badge')}</p>
               </div>
               <div className="brutal-card bg-royal/10">
                 <Command className="mb-4" size={32} />
-                <h4 className="text-xl font-bold mb-2">Multi-Platform</h4>
-                <p className="text-sm text-foreground-muted font-medium">Native support for Claude Code, Cursor, Copilot, and Gemini CLI.</p>
+                <h4 className="text-xl font-bold mb-2">{t('features.multiPlatformTitle')}</h4>
+                <p className="text-sm text-foreground-muted font-medium">{t('features.multiPlatformDesc')}</p>
               </div>
               <div className="brutal-card bg-bg-sky col-span-1 sm:col-span-2 flex flex-row items-center gap-6">
                 <div className="bg-white brutal-border rounded-xl p-4 brutal-shadow">
                   <Sparkles className="text-accent-lime" fill="currentColor" />
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-1">Methodology First</h4>
-                  <p className="text-sm text-foreground-muted font-medium">Built on a philosophy of making AI agents more reliable and capable.</p>
+                  <h4 className="text-xl font-bold mb-1">{t('features.methodologyFirstTitle')}</h4>
+                  <p className="text-sm text-foreground-muted font-medium">{t('features.methodologyFirstDesc')}</p>
                 </div>
               </div>
             </div>
@@ -249,11 +326,11 @@ export default function App() {
       </section>
 
       {/* Comparison Section */}
-      <section className="py-24 px-4 bg-bg-royal text-white relative overflow-hidden">
+      <section className="py-24 px-4 bg-royal text-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-6">
-              WHY CHOOSE <br /> SUPERPOWERS?
+              {t('comparison.title')}
             </h2>
           </div>
 
@@ -261,21 +338,14 @@ export default function App() {
             <div className="space-y-6">
               <div className="bg-white/10 backdrop-blur-sm brutal-border border-white/20 rounded-3xl p-8">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <XCircle className="text-red-400" /> The Old Way
+                  <XCircle className="text-red-400" /> {t('comparison.oldWay')}
                 </h3>
                 <ul className="space-y-4 text-white/80 font-medium">
-                  <li className="flex items-center gap-3 line-through opacity-50">
-                    Unreliable AI agent behavior
-                  </li>
-                  <li className="flex items-center gap-3 line-through opacity-50">
-                    Manual prompt engineering for every task
-                  </li>
-                  <li className="flex items-center gap-3 line-through opacity-50">
-                    Fragmented developer workflows
-                  </li>
-                  <li className="flex items-center gap-3 line-through opacity-50">
-                    Lack of standardized AI toolsets
-                  </li>
+                  {(t('comparison.oldList', { returnObjects: true }) as string[]).map((item, i) => (
+                    <li key={i} className="flex items-center gap-3 line-through opacity-50">
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -284,25 +354,15 @@ export default function App() {
               <DoodleArrow />
               <div className="bg-white text-foreground-dark brutal-border rounded-3xl p-8 brutal-shadow">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                  <CheckCircle2 className="text-accent-lime" fill="currentColor" /> The Superpowers Way
+                  <CheckCircle2 className="text-accent-lime" fill="currentColor" /> {t('comparison.newWay')}
                 </h3>
                 <ul className="space-y-4 font-bold">
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-lime rounded-full" />
-                    Predictable, high-performance agent skills
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-lime rounded-full" />
-                    Standardized methodology for AI development
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-lime rounded-full" />
-                    Seamless integration across multiple AI platforms
-                  </li>
-                  <li className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-accent-lime rounded-full" />
-                    Scalable framework for team collaboration
-                  </li>
+                  {(t('comparison.newList', { returnObjects: true }) as string[]).map((item, i) => (
+                    <li key={i} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-accent-lime rounded-full" />
+                      {item}
+                    </li>
+                  ))}
                 </ul>
               </div>
             </div>
@@ -312,35 +372,68 @@ export default function App() {
 
       {/* Installation Section */}
       <section id="cli" className="py-24 px-4 bg-bg-beige">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">INSTALLATION</h2>
-            <p className="text-foreground-muted font-medium">Get Superpowers up and running in your favorite environment.</p>
+            <h2 className="text-4xl md:text-5xl font-extrabold mb-4">{t('installation.title')}</h2>
+            <p className="text-xl text-foreground-muted font-medium max-w-2xl mx-auto">
+              {t('installation.subtitle')}
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="brutal-card bg-white">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <Terminal size={24} /> Claude Code
-              </h3>
-              <p className="text-sm text-foreground-muted mb-6">Install directly from the Official Marketplace or via Plugin Marketplace.</p>
-              <div className="bg-foreground-dark p-4 rounded-xl font-mono text-sm text-white brutal-border">
-                <div className="text-white/40 mb-2"># Install via marketplace</div>
-                <div className="flex gap-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Claude Code */}
+            <div className="brutal-card bg-white flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-royal text-white p-2 rounded-lg brutal-border">
+                  <Terminal size={24} />
+                </div>
+                <h3 className="text-2xl font-bold">{t('installation.claudeTitle')}</h3>
+              </div>
+              <p className="text-sm text-foreground-muted mb-6 flex-grow">{t('installation.claudeDesc')}</p>
+              <div className="bg-foreground-dark p-4 rounded-xl font-mono text-xs text-white brutal-border">
+                <div className="text-white/40 mb-1"># Official Marketplace</div>
+                <div className="flex gap-2 mb-3">
                   <span className="text-accent-lime">$</span>
                   <span>claude-code install superpowers</span>
+                </div>
+                <div className="text-white/40 mb-1"># Plugin Marketplace</div>
+                <div className="flex gap-2">
+                  <span className="text-accent-lime">$</span>
+                  <span>claude-code plugin add superpowers</span>
                 </div>
               </div>
             </div>
 
-            <div className="brutal-card bg-white">
-              <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
-                <Code2 size={24} /> Cursor & Others
-              </h3>
-              <p className="text-sm text-foreground-muted mb-6">Works seamlessly with Cursor, GitHub Copilot CLI, and Gemini CLI.</p>
-              <div className="bg-foreground-dark p-4 rounded-xl font-mono text-sm text-white brutal-border">
-                <div className="text-white/40 mb-2"># Clone and link</div>
+            {/* Cursor */}
+            <div className="brutal-card bg-white flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-accent-lime text-foreground-dark p-2 rounded-lg brutal-border">
+                  <Code2 size={24} />
+                </div>
+                <h3 className="text-2xl font-bold">{t('installation.cursorTitle')}</h3>
+              </div>
+              <p className="text-sm text-foreground-muted mb-6 flex-grow">{t('installation.cursorDesc')}</p>
+              <div className="bg-foreground-dark p-4 rounded-xl font-mono text-xs text-white brutal-border">
+                <div className="text-white/40 mb-1"># In Cursor Terminal</div>
                 <div className="flex gap-2">
+                  <span className="text-accent-lime">$</span>
+                  <span>cursor --install-plugin superpowers</span>
+                </div>
+              </div>
+            </div>
+
+            {/* CLI Tools */}
+            <div className="brutal-card bg-white flex flex-col">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="bg-bg-sky text-foreground-dark p-2 rounded-lg brutal-border">
+                  <Command size={24} />
+                </div>
+                <h3 className="text-2xl font-bold">{t('installation.cliTitle')}</h3>
+              </div>
+              <p className="text-sm text-foreground-muted mb-6 flex-grow">{t('installation.cliDesc')}</p>
+              <div className="bg-foreground-dark p-4 rounded-xl font-mono text-xs text-white brutal-border">
+                <div className="text-white/40 mb-1"># Manual Installation</div>
+                <div className="flex gap-2 mb-2">
                   <span className="text-accent-lime">$</span>
                   <span>git clone https://github.com/obra/superpowers</span>
                 </div>
@@ -352,13 +445,13 @@ export default function App() {
             </div>
           </div>
 
-          <div className="mt-12 bg-accent-lime brutal-border rounded-2xl p-8 flex flex-col md:flex-row items-center justify-between gap-6">
-            <div>
-              <h4 className="text-2xl font-extrabold mb-2">Verify Installation</h4>
-              <p className="font-medium">Run the check command to ensure everything is set up correctly.</p>
+          <div className="mt-12 bg-accent-lime brutal-border rounded-3xl p-8 flex flex-col md:flex-row items-center justify-between gap-8 brutal-shadow">
+            <div className="max-w-xl">
+              <h4 className="text-3xl font-extrabold mb-2">{t('installation.verifyTitle')}</h4>
+              <p className="font-bold text-foreground-dark/80">{t('installation.verifyDesc')}</p>
             </div>
-            <div className="bg-foreground-dark p-4 rounded-xl font-mono text-sm text-white brutal-border w-full md:w-auto">
-              <div className="flex gap-2">
+            <div className="bg-foreground-dark p-6 rounded-2xl font-mono text-lg text-white brutal-border w-full md:w-auto">
+              <div className="flex gap-3">
                 <span className="text-accent-lime">$</span>
                 <span>sp verify</span>
               </div>
@@ -367,18 +460,92 @@ export default function App() {
         </div>
       </section>
 
+      {/* Basic Workflow Section */}
+      <section id="workflow" className="py-24 px-4 bg-white border-t-2 border-foreground-dark">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">{t('workflow.title')}</h2>
+            <p className="text-xl text-foreground-muted font-medium max-w-2xl mx-auto">
+              {t('workflow.subtitle')}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            {[
+              { step: "01", title: t('workflow.step1'), desc: t('workflow.step1Desc') },
+              { step: "02", title: t('workflow.step2'), desc: t('workflow.step2Desc') },
+              { step: "03", title: t('workflow.step3'), desc: t('workflow.step3Desc') },
+              { step: "04", title: t('workflow.step4'), desc: t('workflow.step4Desc') }
+            ].map((item, i) => (
+              <div key={i} className="brutal-card bg-white relative pt-12">
+                <div className="absolute top-4 left-4 text-4xl font-black text-accent-lime/30">{item.step}</div>
+                <h4 className="text-xl font-bold mb-2 relative z-10">{item.title}</h4>
+                <p className="text-sm text-foreground-muted font-medium relative z-10">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Library Section */}
+      <section id="skills" className="py-24 px-4 bg-bg-sky border-t-2 border-foreground-dark">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-8 mb-16">
+            <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">{t('skills.title')}</h2>
+            <div className="bg-white brutal-border rounded-full px-6 py-2 font-bold brutal-shadow">
+              {t('skills.badge')}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              { title: t('skills.skill1'), desc: t('skills.skill1Desc') },
+              { title: t('skills.skill2'), desc: t('skills.skill2Desc') },
+              { title: t('skills.skill3'), desc: t('skills.skill3Desc') },
+              { title: t('skills.skill4'), desc: t('skills.skill4Desc') },
+              { title: t('skills.skill5'), desc: t('skills.skill5Desc') },
+              { title: t('skills.skill6'), desc: t('skills.skill6Desc') }
+            ].map((skill, i) => (
+              <div key={i} className="brutal-card bg-white hover:bg-accent-lime transition-colors group">
+                <h4 className="text-2xl font-bold mb-2">{skill.title}</h4>
+                <p className="text-foreground-muted font-medium group-hover:text-foreground-dark transition-colors">{skill.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Philosophy Section */}
+      <section id="philosophy" className="py-24 px-4 bg-royal text-white">
+        <div className="max-w-4xl mx-auto text-center space-y-8">
+          <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight">{t('philosophy.title')}</h2>
+          <p className="text-xl md:text-2xl font-medium leading-relaxed">
+            {t('philosophy.quote')}
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 pt-8">
+            {(t('philosophy.tags', { returnObjects: true }) as string[]).map((tag, i) => (
+              <div key={i} className="bg-white/10 brutal-border border-white/20 rounded-full px-6 py-2 font-bold">{tag}</div>
+            ))}
+          </div>
+        </div>
+      </section>
+      </main>
+
       {/* Footer */}
       <footer className="py-12 px-4 border-t-2 border-foreground-dark">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="flex items-center gap-2">
-            <div className="bg-accent-lime brutal-border rounded-lg p-1.5">
-              <Zap size={20} fill="currentColor" />
-            </div>
+          <div className="flex items-center gap-3">
+            <Logo size={20} />
             <span className="font-extrabold text-xl tracking-tight">SUPERPOWERS</span>
           </div>
 
-          <div className="text-sm font-bold text-foreground-muted">
-            © 2026 Superpowers Project. Open source under MIT License.
+          <div className="flex flex-col items-center md:items-start gap-2">
+            <div className="text-sm font-bold text-foreground-muted">
+              {t('footer.copy')}
+            </div>
+            <div className="text-[10px] sm:text-xs font-medium text-foreground-muted max-w-[280px] sm:max-w-xs text-center md:text-left leading-tight">
+              {t('footer.disclaimer')}
+            </div>
           </div>
 
           <div className="flex items-center gap-6">
@@ -386,9 +553,10 @@ export default function App() {
               href="https://github.com/obra/superpowers" 
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="GitHub Repository"
               className="p-2 brutal-border rounded-full hover:bg-accent-lime transition-colors"
             >
-              <Github size={20} />
+              <Github size={20} aria-hidden="true" />
             </a>
             <a 
               href="https://github.com/obra/superpowers/releases"
@@ -396,7 +564,7 @@ export default function App() {
               rel="noopener noreferrer"
               className="brutal-btn-primary py-2 px-6 no-underline"
             >
-              Download
+              {t('footer.download')}
             </a>
           </div>
         </div>

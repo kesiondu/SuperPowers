@@ -6,7 +6,7 @@
   
   --color-bg-sky: #E0F4FF;
   --color-bg-sage: #D1F4E0;
-  --color-bg-royal: #2563EB;
+  --color-royal: #2563EB;
   --color-bg-beige: #F3F4F6;
   --color-accent-lime: #B1E73E;
   --color-foreground-dark: #0F172A;
@@ -16,6 +16,10 @@
 @layer base {
   body {
     @apply font-sans text-foreground-dark antialiased;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-4 ring-royal ring-offset-2;
   }
 }
 

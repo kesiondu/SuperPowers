@@ -1,0 +1,17 @@
+{
+  "name": "Superpowers | Agentic Skills Framework",
+  "short_name": "Superpowers",
+  "description": "An agentic skills framework & software development methodology that actually works.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#B1E73E",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
