@@ -18,3 +18,4 @@ View your app in AI Studio: https://ai.studio/apps/75738641-d9c7-40a5-bf3e-37fcf
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+4.  https://superpowers.speedsgpt.com/
