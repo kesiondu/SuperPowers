@@ -63,16 +63,16 @@ const Docs: React.FC = () => {
   return (
     <div className="min-h-screen bg-white selection:bg-accent-lime selection:text-foreground-dark">
       {/* Simple Nav for Docs */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4" aria-label="Documentation Navigation">
-        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-2xl px-6 py-3">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4" aria-label="Documentation Navigation">
+        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-3">
           <Link to="/" className="flex items-center gap-2 hover:text-royal transition-colors no-underline text-foreground-dark" aria-label={t('nav.backToHome')}>
-            <ArrowLeft size={20} aria-hidden="true" />
-            <span className="font-bold">{t('nav.backToHome')}</span>
+            <ArrowLeft size={18} className="sm:scale-110" aria-hidden="true" />
+            <span className="font-bold text-sm sm:text-base">{t('nav.backToHome')}</span>
           </Link>
           
-          <div className="flex items-center gap-3">
-            <Logo size={20} />
-            <span className="font-extrabold text-xl tracking-tight hidden sm:inline">SUPERPOWERS</span>
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Logo size={18} className="sm:scale-110" />
+            <span className="font-extrabold text-lg sm:text-xl tracking-tight hidden xs:inline">SUPERPOWERS</span>
           </div>
 
           <div className="flex items-center gap-3">

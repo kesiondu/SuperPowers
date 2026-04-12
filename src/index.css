@@ -11,6 +11,8 @@
   --color-accent-lime: #B1E73E;
   --color-foreground-dark: #0F172A;
   --color-foreground-muted: #475569;
+
+  --breakpoint-xs: 380px;
 }
 
 @layer base {

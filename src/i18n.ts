@@ -1972,10 +1972,10 @@ Crediamo che gli agenti AI non siano solo assistenti, ma contributori primari. S
 };
 
 i18n
-  .use(LanguageDetector)
   .use(initReactI18next)
   .init({
     resources,
+    lng: 'en',
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false

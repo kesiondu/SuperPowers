@@ -94,11 +94,11 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white selection:bg-accent-lime selection:text-foreground-dark">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-4" aria-label="Main Navigation">
-        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-2xl px-6 py-3">
-          <Link to="/" className="flex items-center gap-3 no-underline text-foreground-dark group" aria-label="Superpowers Home">
-            <Logo size={20} />
-            <span className="font-extrabold text-xl tracking-tight group-hover:text-royal transition-colors">SUPERPOWERS</span>
+      <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4" aria-label="Main Navigation">
+        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-3">
+          <Link to="/" className="flex items-center gap-2 sm:gap-3 no-underline text-foreground-dark group" aria-label="Superpowers Home">
+            <Logo size={18} className="sm:scale-110" />
+            <span className="font-extrabold text-lg sm:text-xl tracking-tight group-hover:text-royal transition-colors">SUPERPOWERS</span>
           </Link>
           
           <div className="hidden lg:flex items-center gap-6 font-semibold text-sm">
