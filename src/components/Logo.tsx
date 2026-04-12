@@ -26,12 +26,21 @@ export const Logo: React.FC<LogoProps> = ({ size = 24, className = "" }) => {
           xmlns="http://www.w3.org/2000/svg"
           className="text-foreground-dark"
         >
+          {/* Stylized 'S' Bolt Logo */}
           <path 
-            d="M13 2L3 14H12L11 22L21 10H12L13 2Z" 
+            d="M16 3H7L4 13H11L8 21H17L20 11H13L16 3Z" 
             fill="currentColor" 
             stroke="currentColor" 
-            strokeWidth="2" 
+            strokeWidth="1.5" 
             strokeLinejoin="round"
+          />
+          <path 
+            d="M12 8L10 13H14L12 18" 
+            stroke="white" 
+            strokeWidth="1.5" 
+            strokeLinecap="round" 
+            strokeLinejoin="round"
+            className="opacity-80"
           />
         </svg>
       </div>

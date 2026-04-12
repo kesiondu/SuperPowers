@@ -110,6 +110,11 @@ const resources = {
         tags: ["Open Source", "Agent-First", "Community Driven"]
       },
       docs: {
+        title: "Documentation",
+        overview: "Overview",
+        tutorials: "Tutorials",
+        gettingStarted: "Getting Started",
+        buildSkill: "Building a Skill",
         content: `
 # SUPERPOWERS
 
@@ -167,6 +172,123 @@ sp verify
 ## Philosophy
 
 We believe that AI agents are not just assistants, but primary contributors. Superpowers provides the framework to make that contribution reliable, scalable, and powerful.
+`,
+        gettingStartedContent: `
+# Getting Started: Your First 5 Minutes
+
+This tutorial covers the essential steps to get Superpowers running in your local development environment.
+
+![Terminal Setup](https://picsum.photos/seed/setup/800/400)
+*Figure 1: Initializing the Superpowers environment via CLI.*
+
+## 1. Environment Preparation
+
+Ensure you have the latest version of Node.js and a supported AI IDE (like Cursor or VS Code with Claude Code) installed.
+
+\`\`\`bash
+# Check version
+node -v
+\`\`\`
+
+## 2. Global Installation
+
+Install the Superpowers CLI globally to access the \`sp\` command from anywhere.
+
+\`\`\`bash
+npm install -g @superpowers/cli
+\`\`\`
+
+## 3. Project Initialization
+
+Navigate to your project root and run the initialization command. This creates a \`.superpowers\` configuration directory.
+
+\`\`\`bash
+cd your-project
+sp init
+\`\`\`
+
+![Project Structure](https://picsum.photos/seed/structure/800/400)
+*Figure 2: The generated .superpowers directory structure.*
+
+## 4. Linking Your First Skill
+
+By default, Superpowers includes a set of "Base Skills". Link the \`refactor\` skill to your current session:
+
+\`\`\`bash
+sp link refactor
+\`\`\`
+
+## 5. Verification
+
+Run the verification suite to ensure your AI agent can communicate with the linked skills.
+
+\`\`\`bash
+sp verify
+\`\`\`
+
+If everything is green, your agent is now "Superpowered".
+`,
+        buildSkillContent: `
+# Advanced: Building a Production-Ready Skill
+
+Learn how to encapsulate complex engineering patterns into reusable agentic skills.
+
+![Skill Architecture](https://picsum.photos/seed/architecture/800/400)
+*Figure 1: Detailed breakdown of a Skill's internal components.*
+
+## The Skill Anatomy
+
+A Skill consists of three main parts:
+1. **Metadata**: Defines the skill name and version.
+2. **Instructions (SKILL.md)**: The core logic for the AI.
+3. **Tools (scripts/)**: Executable scripts the AI can call.
+
+## Step 1: Scaffold the Skill
+
+Use the CLI to generate a new skill template:
+
+\`\`\`bash
+sp create skill my-security-auditor
+\`\`\`
+
+## Step 2: Writing Effective Instructions
+
+Open \`skills/my-security-auditor/SKILL.md\`. Avoid generic prompts. Instead, use **Constraint-Based Engineering**:
+
+\`\`\`markdown
+# Security Auditor
+## Constraints
+- NEVER suggest exposing environment variables.
+- ALWAYS check for SQL injection patterns in raw queries.
+- PREFER parameterized queries over string concatenation.
+\`\`\`
+
+![Code Editor](https://picsum.photos/seed/editor/800/400)
+*Figure 2: Implementing strict constraints in the SKILL.md file.*
+
+## Step 3: Implementing Tooling
+
+If your skill needs to run a specific security scanner, place the script in the \`scripts/\` directory.
+
+\`\`\`python
+# skills/my-security-auditor/scripts/scan.py
+import subprocess
+
+def run_scan():
+    # Logic to run bandit or other scanners
+    pass
+\`\`\`
+
+## Step 4: Testing the Skill
+
+Test your skill against a known vulnerable codebase to verify the agent's response.
+
+\`\`\`bash
+sp test --skill my-security-auditor --target ./vulnerable-app
+\`\`\`
+
+![Test Results](https://picsum.photos/seed/test/800/400)
+*Figure 3: Analyzing agent performance and accuracy during testing.*
 `
       },
       footer: {
@@ -283,6 +405,11 @@ We believe that AI agents are not just assistants, but primary contributors. Sup
         tags: ["开源", "智能体优先", "社区驱动"]
       },
       docs: {
+        title: "文档中心",
+        overview: "概览",
+        tutorials: "实战教程",
+        gettingStarted: "快速上手",
+        buildSkill: "构建自定义技能",
         content: `
 # SUPERPOWERS
 
@@ -340,6 +467,123 @@ sp verify
 ## 哲学理念
 
 我们相信 AI 智能体不仅是助手，更是主要贡献者。Superpowers 提供了使这种贡献变得可靠、可扩展且强大的框架。
+`,
+        gettingStartedContent: `
+# 快速上手：开启您的 5 分钟超能力之旅
+
+本教程将引导您在本地开发环境中快速运行 Superpowers 框架。
+
+![终端设置](https://picsum.photos/seed/setup/800/400)
+*图 1：通过 CLI 初始化 Superpowers 环境。*
+
+## 1. 环境准备
+
+确保您已安装最新版本的 Node.js 以及受支持的 AI IDE（如 Cursor 或安装了 Claude Code 的 VS Code）。
+
+\`\`\`bash
+# 检查版本
+node -v
+\`\`\`
+
+## 2. 全局安装
+
+全局安装 Superpowers CLI，以便在任何地方访问 \`sp\` 命令。
+
+\`\`\`bash
+npm install -g @superpowers/cli
+\`\`\`
+
+## 3. 项目初始化
+
+进入您的项目根目录并运行初始化命令。这将创建一个 \`.superpowers\` 配置目录。
+
+\`\`\`bash
+cd your-project
+sp init
+\`\`\`
+
+![项目结构](https://picsum.photos/seed/structure/800/400)
+*图 2：生成的 .superpowers 目录结构。*
+
+## 4. 链接您的第一个技能
+
+默认情况下，Superpowers 包含一组“基础技能”。将 \`refactor\` 技能链接到您当前的会话：
+
+\`\`\`bash
+sp link refactor
+\`\`\`
+
+## 5. 验证
+
+运行验证套件，确保您的 AI 智能体能够与链接的技能正常通信。
+
+\`\`\`bash
+sp verify
+\`\`\`
+
+如果所有检查都显示绿色，您的智能体现在已经拥有了“超能力”。
+`,
+        buildSkillContent: `
+# 进阶：构建生产级自定义技能
+
+了解如何将复杂的工程模式封装为可重用的智能体技能。
+
+![技能架构](https://picsum.photos/seed/architecture/800/400)
+*图 1：技能内部组件的详细分解。*
+
+## 技能解剖
+
+一个技能由三个主要部分组成：
+1. **元数据 (Metadata)**：定义技能名称和版本。
+2. **指令 (SKILL.md)**：AI 遵循的核心逻辑。
+3. **工具 (scripts/)**：AI 可以调用的可执行脚本。
+
+## 第一步：生成技能脚手架
+
+使用 CLI 生成新的技能模板：
+
+\`\`\`bash
+sp create skill my-security-auditor
+\`\`\`
+
+## 第二步：编写高效的指令
+
+打开 \`skills/my-security-auditor/SKILL.md\`。避免使用通用的提示词，转而使用**基于约束的工程方法**：
+
+\`\`\`markdown
+# 安全审计员
+## 约束条件
+- 严禁建议暴露环境变量。
+- 始终检查原始查询中的 SQL 注入模式。
+- 优先使用参数化查询，而非字符串拼接。
+\`\`\`
+
+![代码编辑器](https://picsum.photos/seed/editor/800/400)
+*图 2：在 SKILL.md 文件中实施严格的约束。*
+
+## 第三步：实施工具链
+
+如果您的技能需要运行特定的安全扫描器，请将脚本放置在 \`scripts/\` 目录中。
+
+\`\`\`python
+# skills/my-security-auditor/scripts/scan.py
+import subprocess
+
+def run_scan():
+    # 运行 bandit 或其他扫描器的逻辑
+    pass
+\`\`\`
+
+## 第四步：测试技能
+
+针对已知的漏洞代码库测试您的技能，以验证智能体的响应。
+
+\`\`\`bash
+sp test --skill my-security-auditor --target ./vulnerable-app
+\`\`\`
+
+![测试结果](https://picsum.photos/seed/test/800/400)
+*图 3：在测试期间分析智能体的性能和准确性。*
 `
       },
       footer: {

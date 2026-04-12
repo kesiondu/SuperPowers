@@ -52,12 +52,45 @@ export default function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/docs" element={<Docs />} />
+      <Route path="/docs/:slug" element={<Docs />} />
     </Routes>
   );
 }
 
 const Home = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+
+  React.useEffect(() => {
+    // Update document title
+    const originalTitle = document.title;
+    document.title = `Superpowers | Agentic Skills Framework for AI`;
+
+    // Update meta description
+    const metaDescription = document.querySelector('meta[name="description"]');
+    const originalDescription = metaDescription?.getAttribute('content');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', t('hero.desc'));
+    }
+
+    // Update canonical URL
+    const canonicalLink = document.querySelector('link[rel="canonical"]');
+    const originalCanonical = canonicalLink?.getAttribute('href');
+    if (canonicalLink) {
+      canonicalLink.setAttribute('href', window.location.href);
+    }
+
+    // Cleanup on unmount
+    return () => {
+      document.title = originalTitle;
+      if (metaDescription && originalDescription) {
+        metaDescription.setAttribute('content', originalDescription);
+      }
+      if (canonicalLink && originalCanonical) {
+        canonicalLink.setAttribute('href', originalCanonical);
+      }
+    };
+  }, [t, i18n.language]);
+
   return (
     <div className="min-h-screen bg-white selection:bg-accent-lime selection:text-foreground-dark">
       {/* Navigation */}
