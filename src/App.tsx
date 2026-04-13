@@ -4,6 +4,8 @@ import { motion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import { Routes, Route, Link, useLocation } from 'react-router-dom';
 import Docs from './pages/Docs';
+import Guide from './pages/Guide';
+import UseCases from './pages/UseCases';
 import { LanguageSelector } from './components/LanguageSelector';
 import { Logo } from './components/Logo';
 
@@ -53,6 +55,8 @@ export default function App() {
       <Route path="/" element={<Home />} />
       <Route path="/docs" element={<Docs />} />
       <Route path="/docs/:slug" element={<Docs />} />
+      <Route path="/guide" element={<Guide />} />
+      <Route path="/use-cases" element={<UseCases />} />
     </Routes>
   );
 }
@@ -94,11 +98,11 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-white selection:bg-accent-lime selection:text-foreground-dark">
       {/* Navigation */}
-      <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-2 sm:py-4" aria-label="Main Navigation">
-        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-xl sm:rounded-2xl px-3 sm:px-6 py-2 sm:py-3">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-2 sm:px-4 py-1.5 sm:py-4" aria-label="Main Navigation">
+        <div className="max-w-7xl mx-auto flex items-center justify-between bg-white/80 backdrop-blur-md brutal-border rounded-xl sm:rounded-2xl px-3 sm:px-6 py-1.5 sm:py-3">
           <Link to="/" className="flex items-center gap-2 sm:gap-3 no-underline text-foreground-dark group" aria-label="Superpowers Home">
-            <Logo size={18} className="sm:scale-110" />
-            <span className="font-extrabold text-lg sm:text-xl tracking-tight group-hover:text-royal transition-colors">SUPERPOWERS</span>
+            <Logo size={16} className="sm:scale-125" />
+            <span className="font-extrabold text-base sm:text-xl tracking-tight group-hover:text-royal transition-colors">SUPERPOWERS</span>
           </Link>
           
           <div className="hidden lg:flex items-center gap-6 font-semibold text-sm">
@@ -108,6 +112,8 @@ const Home = () => {
             <a href="#workflow" className="hover:text-royal transition-colors">{t('nav.workflow')}</a>
             <a href="#skills" className="hover:text-royal transition-colors">{t('nav.skills')}</a>
             <Link to="/docs" className="hover:text-royal transition-colors no-underline text-foreground-dark">{t('nav.docs')}</Link>
+            <Link to="/guide" className="hover:text-royal transition-colors no-underline text-foreground-dark">Guide</Link>
+            <Link to="/use-cases" className="hover:text-royal transition-colors no-underline text-foreground-dark">Use Cases</Link>
           </div>
 
           <div className="flex items-center gap-3">
@@ -572,7 +578,13 @@ const Home = () => {
             <span className="font-extrabold text-xl tracking-tight">SUPERPOWERS</span>
           </div>
 
-          <div className="flex flex-col items-center md:items-start gap-2">
+          <div className="flex flex-col items-center md:items-start gap-4">
+            <div className="flex flex-wrap justify-center md:justify-start gap-x-6 gap-y-2 text-sm font-bold">
+              <Link to="/docs" className="hover:text-royal transition-colors no-underline text-foreground-dark">Documentation</Link>
+              <Link to="/guide" className="hover:text-royal transition-colors no-underline text-foreground-dark">User Guide</Link>
+              <Link to="/use-cases" className="hover:text-royal transition-colors no-underline text-foreground-dark">Use Cases</Link>
+              <a href="https://github.com/obra/superpowers/discussions" target="_blank" rel="noopener noreferrer" className="hover:text-royal transition-colors no-underline text-foreground-dark">Community</a>
+            </div>
             <div className="text-sm font-bold text-foreground-muted">
               {t('footer.copy')}
             </div>

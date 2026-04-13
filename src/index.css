@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @theme {
@@ -43,4 +44,20 @@
 
 @utility brutal-btn-secondary {
   @apply bg-white text-foreground-dark brutal-border rounded-xl px-6 py-3 font-bold transition-all hover:-translate-y-1 hover:shadow-[4px_4px_0px_0px_#0F172A] active:translate-y-0 active:shadow-none;
+}
+
+@utility prose-brutal {
+  @apply prose prose-slate prose-lg max-w-none 
+    prose-headings:font-black prose-headings:tracking-tight prose-headings:uppercase
+    prose-h1:text-4xl md:prose-h1:text-6xl prose-h1:mb-12 prose-h1:leading-[0.9]
+    prose-h2:text-3xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:border-b-4 prose-h2:border-accent-lime prose-h2:pb-3
+    prose-h3:text-xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:font-extrabold
+    prose-p:text-lg md:prose-p:text-xl prose-p:leading-relaxed prose-p:font-medium prose-p:text-foreground-muted
+    prose-li:font-medium prose-li:text-lg md:prose-li:text-xl prose-li:my-2
+    prose-strong:font-black prose-strong:text-foreground-dark
+    prose-code:bg-bg-beige prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:brutal-border prose-code:before:content-none prose-code:after:content-none prose-code:text-royal prose-code:font-bold
+    prose-pre:bg-foreground-dark prose-pre:text-white prose-pre:p-8 prose-pre:rounded-3xl prose-pre:brutal-border prose-pre:shadow-[8px_8px_0px_0px_rgba(15,23,42,0.1)]
+    prose-a:text-royal prose-a:font-black prose-a:no-underline hover:prose-a:underline decoration-accent-lime decoration-4 underline-offset-4
+    prose-img:rounded-3xl prose-img:brutal-border prose-img:w-full prose-img:my-12 prose-img:shadow-xl
+    prose-blockquote:border-l-8 prose-blockquote:border-accent-lime prose-blockquote:bg-bg-beige prose-blockquote:p-6 prose-blockquote:rounded-r-2xl prose-blockquote:font-bold prose-blockquote:italic;
 }

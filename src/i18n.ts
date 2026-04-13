@@ -291,6 +291,104 @@ sp test --skill my-security-auditor --target ./vulnerable-app
 *Figure 3: Analyzing agent performance and accuracy during testing.*
 `
       },
+      guide: {
+        title: "User Guide",
+        subtitle: "A deep dive into the Agentic Skills Framework architecture and best practices.",
+        seoTitle: "Advanced User Guide | Superpowers Agentic Framework",
+        seoDesc: "Master the Superpowers framework. Learn about tool-use loops, context management, and building high-performance agentic workflows.",
+        content: `
+# Advanced User Guide: The Agentic Paradigm
+
+Superpowers is not just a tool; it's a fundamental shift in how we interact with Large Language Models (LLMs) for software engineering. This guide explores the architectural principles and advanced strategies for building reliable agentic workflows.
+
+## 1. The Shift from Chat to Agents
+
+Traditional AI interactions are **conversational** (stateless, one-off prompts). Superpowers enables **agentic** behavior, characterized by:
+- **Autonomy**: The ability to plan and execute multi-step tasks.
+- **Tool-Use**: Interacting with the external world (file systems, APIs, compilers).
+- **Self-Correction**: Analyzing errors and iterating on solutions without human intervention.
+
+## 2. Skill-Based Architecture
+
+A "Skill" in Superpowers is a modular unit of capability. It encapsulates:
+- **System Instructions**: High-precision directives that define the agent's persona and constraints.
+- **Tool Definitions**: JSON schemas that describe executable functions (scripts).
+- **Knowledge Base**: Contextual data or documentation specific to the domain.
+
+### Best Practice: Granularity
+Avoid "God Skills". Instead of a single \`web-developer\` skill, break it down into \`css-architect\`, \`react-hooks-expert\`, and \`api-integrator\`. This reduces context noise and improves accuracy.
+
+## 3. Mastering the Tool-Use Loop
+
+The core of an agentic workflow is the **Observation-Thought-Action** loop:
+1. **Thought**: The agent analyzes the current state and plans the next move.
+2. **Action**: The agent calls a tool (e.g., \`edit_file\`).
+3. **Observation**: The system returns the result of the tool execution (e.g., "File updated" or "Syntax error").
+4. **Iteration**: The agent processes the observation and updates its plan.
+
+## 4. Context Management Strategies
+
+LLMs have finite context windows. To maintain high performance:
+- **Selective Linking**: Only activate skills relevant to the immediate objective.
+- **State Summarization**: Use agents to periodically summarize long-running task states to free up context.
+- **Cache Management**: Leverage the \`.superpowers/cache\` to store expensive computation results.
+
+## 5. Advanced Agentic Patterns
+
+To achieve production-grade reliability, Superpowers supports several advanced patterns:
+
+### Reflection & Self-Correction
+Don't just take the first answer. Configure your skills to require a "Review" step where the agent (or a second "Critic" agent) analyzes the output against the original requirements.
+
+### Dynamic Planning
+For open-ended tasks, use the \`Planner\` skill. The agent will first generate a task list, which you can review before execution begins.
+
+### Multi-Agent Orchestration
+Superpowers allows you to define "Handoff" points. For example, a \`Security Agent\` can pass a verified patch to a \`DevOps Agent\` for deployment.
+
+## 6. Security & Sandboxing
+
+When agents generate and execute code, security is paramount.
+- **Restricted Environments**: Run agents in containers or sandboxed environments.
+- **Human-in-the-Loop (HITL)**: For high-risk operations (e.g., deleting production data), always require manual confirmation.
+- **Audit Logs**: Every tool call is logged in \`.superpowers/logs\` for post-execution analysis.
+
+---
+
+*For technical support or to contribute to the framework, visit our [GitHub Repository](https://github.com/obra/superpowers).*
+`
+      },
+      useCases: {
+        title: "Use Cases",
+        subtitle: "Real-world applications of autonomous agents in complex engineering environments.",
+        seoTitle: "Agentic Workflows Use Cases | Superpowers",
+        seoDesc: "Explore how industry leaders use Superpowers for legacy migration, automated security, and intelligent infrastructure management.",
+        content: `
+# Engineering Use Cases: Autonomous Intelligence
+
+Superpowers excels in scenarios where complexity and scale exceed human manual capacity. Here is how teams are leveraging the framework today.
+
+## 1. Automated Technical Debt Reduction
+**The Problem**: A legacy codebase with 500+ files using deprecated patterns (e.g., migrating from Class components to React Hooks).
+**The Solution**: An agent equipped with the \`Refactor\` and \`AST-Parser\` skills. The agent systematically traverses the dependency graph, identifies patterns, applies transformations, and runs unit tests to verify each change.
+**Outcome**: Migration completed in 4 hours instead of 3 weeks, with 100% type safety.
+
+## 2. Continuous Security Intelligence
+**The Problem**: Security vulnerabilities are often caught too late in the CI/CD pipeline.
+**The Solution**: Integrating the \`Security Auditor\` skill directly into the developer's local environment. As the agent writes code, it performs real-time static analysis and cross-references with CVE databases.
+**Outcome**: 80% reduction in security-related PR rejections.
+
+## 3. Intelligent Infrastructure Provisioning
+**The Problem**: Managing complex Terraform/Pulumi configurations across multiple cloud providers.
+**The Solution**: Using the \`Cloud Architect\` skill. The agent can interpret high-level requirements (e.g., "Deploy a scalable k8s cluster in AWS with RDS") and generate the corresponding IaC, validate it against policy-as-code (OPA), and execute the deployment.
+**Outcome**: Zero-configuration infrastructure management for developers.
+
+## 4. Self-Healing Documentation
+**The Problem**: Documentation is perpetually out of sync with the implementation.
+**The Solution**: A background agent that monitors file changes. When a function signature or API endpoint changes, the agent uses the \`Doc-Gen\` skill to update the relevant Markdown files and internal wikis.
+**Outcome**: Documentation that is always a "source of truth," reducing developer onboarding time by 40%.
+`
+      },
       footer: {
         copy: "© 2026 Superpowers Project. Open source under MIT License.",
         download: "Download",
@@ -584,6 +682,104 @@ sp test --skill my-security-auditor --target ./vulnerable-app
 
 ![测试结果](https://picsum.photos/seed/test/800/400)
 *图 3：在测试期间分析智能体的性能和准确性。*
+`
+      },
+      guide: {
+        title: "用户指南",
+        subtitle: "深度解析智能体技能框架 (Agentic Skills Framework) 的架构与最佳实践。",
+        seoTitle: "高级用户指南 | Superpowers 智能体框架",
+        seoDesc: "掌握 Superpowers 框架。深入了解工具调用循环、上下文管理以及构建高性能智能体工作流。",
+        content: `
+# 高级用户指南：智能体范式 (The Agentic Paradigm)
+
+Superpowers 不仅仅是一个工具，它是我们与大语言模型 (LLM) 进行软件工程交互方式的根本性转变。本指南将探讨构建可靠智能体工作流的架构原则和高级策略。
+
+## 1. 从“对话”到“智能体”的转变
+
+传统的 AI 交互是**对话式**的（无状态、一次性提示词）。Superpowers 启用了**智能体 (Agentic)** 行为，其特征包括：
+- **自主性 (Autonomy)**：规划和执行多步任务的能力。
+- **工具调用 (Tool-Use)**：与外部世界（文件系统、API、编译器）进行交互。
+- **自我修正 (Self-Correction)**：在无需人工干预的情况下分析错误并迭代解决方案。
+
+## 2. 基于技能的架构 (Skill-Based Architecture)
+
+Superpowers 中的“技能 (Skill)”是一个模块化的能力单元。它封装了：
+- **系统指令 (System Instructions)**：定义智能体角色和约束的高精度指令。
+- **工具定义 (Tool Definitions)**：描述可执行函数（脚本）的 JSON 模式。
+- **知识库 (Knowledge Base)**：特定领域的上下文数据或文档。
+
+### 最佳实践：粒度控制
+避免创建“全能技能”。与其创建一个 \`web-developer\` 技能，不如将其拆分为 \`css-architect\`、\`react-hooks-expert\` 和 \`api-integrator\`。这能有效减少上下文噪音并提高准确性。
+
+## 3. 掌握工具调用循环 (Tool-Use Loop)
+
+智能体工作流的核心是 **观察-思考-行动 (Observation-Thought-Action)** 循环：
+1. **思考 (Thought)**：智能体分析当前状态并规划下一步行动。
+2. **行动 (Action)**：智能体调用工具（例如 \`edit_file\`）。
+3. **观察 (Observation)**：系统返回工具执行结果（例如“文件已更新”或“语法错误”）。
+4. **迭代 (Iteration)**：智能体处理观察结果并更新其计划。
+
+## 4. 上下文管理策略
+
+LLM 的上下文窗口是有限的。为了保持高性能：
+- **选择性链接**：仅激活与当前目标相关的技能。
+- **状态总结**：使用智能体定期总结长期任务的状态，以释放上下文空间。
+- **缓存管理**：利用 \`.superpowers/cache\` 存储高昂的计算结果。
+
+## 5. 高级智能体模式 (Advanced Agentic Patterns)
+
+为了达到生产级的可靠性，Superpowers 支持几种高级模式：
+
+### 反思与自我修正 (Reflection)
+不要只接受第一个答案。配置您的技能以要求“审查”步骤，让智能体（或第二个“评论家”智能体）根据原始需求分析输出结果。
+
+### 动态规划 (Dynamic Planning)
+对于开放式任务，使用 \`Planner\` 技能。智能体将首先生成任务列表，您可以在执行开始前进行审查。
+
+### 多智能体编排 (Multi-Agent Orchestration)
+Superpowers 允许您定义“移交 (Handoff)”点。例如，\`安全智能体\` 可以将经过验证的补丁移交给 \`DevOps 智能体\` 进行部署。
+
+## 6. 安全与沙箱机制
+
+当智能体生成并执行代码时，安全性至关重要。
+- **受限环境**：在容器或沙箱环境中运行智能体。
+- **人机协同 (Human-in-the-Loop)**：对于高风险操作（如删除生产数据），始终要求人工确认。
+- **审计日志**：每次工具调用都会记录在 \`.superpowers/logs\` 中，以便进行执行后分析。
+
+---
+
+*如需技术支持或为框架做出贡献，请访问我们的 [GitHub 仓库](https://github.com/obra/superpowers)。*
+`
+      },
+      useCases: {
+        title: "应用案例",
+        subtitle: "自主智能体在复杂工程环境中的真实应用。",
+        seoTitle: "智能体工作流应用案例 | Superpowers",
+        seoDesc: "探索行业领先者如何使用 Superpowers 进行旧代码迁移、自动化安全审计和智能基础设施管理。",
+        content: `
+# 工程应用案例：自主智能 (Autonomous Intelligence)
+
+Superpowers 在复杂度和规模超出人工处理能力的场景中表现出色。以下是团队目前如何利用该框架的实例。
+
+## 1. 自动化技术债治理
+**问题**：一个拥有 500 多个文件的旧代码库使用了过时的模式（例如，从 Class 组件迁移到 React Hooks）。
+**解决方案**：配备 \`Refactor\` 和 \`AST-Parser\` 技能的智能体。智能体系统地遍历依赖图，识别模式，执行转换，并运行单元测试以验证每项更改。
+**成果**：迁移在 4 小时内完成（原计划 3 周），且保证 100% 的类型安全。
+
+## 2. 持续安全情报
+**问题**：安全漏洞通常在 CI/CD 流水线的后期才被发现。
+**解决方案**：将 \`Security Auditor\` 技能直接集成到开发者的本地环境中。在智能体编写代码时，它会执行实时静态分析并交叉引用 CVE 数据库。
+**成果**：与安全相关的 PR 拒绝率降低了 80%。
+
+## 3. 智能基础设施编排
+**问题**：跨多个云服务商管理复杂的 Terraform/Pulumi 配置。
+**解决方案**：使用 \`Cloud Architect\` 技能。智能体可以理解高级需求（例如“在 AWS 中部署一个带有 RDS 的可扩展 k8s 集群”），生成相应的 IaC 代码，根据策略代码 (OPA) 进行验证，并执行部署。
+**成果**：为开发者实现了零配置的基础设施管理。
+
+## 4. 自愈式文档系统
+**问题**：文档永远与代码实现不同步。
+**解决方案**：一个监控文件更改的后台智能体。当函数签名或 API 端点发生变化时，智能体使用 \`Doc-Gen\` 技能更新相关的 Markdown 文件和内部维基。
+**成果**：文档始终是“单一事实来源”，将开发者入职培训时间缩短了 40%。
 `
       },
       footer: {
