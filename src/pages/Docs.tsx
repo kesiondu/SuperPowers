@@ -14,7 +14,8 @@ const Docs: React.FC = () => {
 
   const isGettingStarted = slug === 'getting-started';
   const isBuildSkill = slug === 'build-custom-skill';
-  const isAnyTutorial = isGettingStarted || isBuildSkill;
+  const isSuperpowersEngineering = slug === 'superpowers-engineering';
+  const isAnyTutorial = isGettingStarted || isBuildSkill || isSuperpowersEngineering;
 
   React.useEffect(() => {
     // Update document title
@@ -22,6 +23,7 @@ const Docs: React.FC = () => {
     let pageTitle = t('docs.overview');
     if (isGettingStarted) pageTitle = t('docs.gettingStarted');
     if (isBuildSkill) pageTitle = t('docs.buildSkill');
+    if (isSuperpowersEngineering) pageTitle = t('docs.superpowersEngineering');
     
     document.title = `${pageTitle} | Superpowers Agentic Skills Framework`;
 
@@ -32,6 +34,7 @@ const Docs: React.FC = () => {
       let desc = t('hero.desc');
       if (isGettingStarted) desc = t('docs.gettingStartedContent').substring(0, 160);
       if (isBuildSkill) desc = t('docs.buildSkillContent').substring(0, 160);
+      if (isSuperpowersEngineering) desc = t('docs.superpowersEngineeringContent').substring(0, 160);
       metaDescription.setAttribute('content', desc);
     }
 
@@ -57,6 +60,7 @@ const Docs: React.FC = () => {
   const getContent = () => {
     if (isGettingStarted) return t('docs.gettingStartedContent');
     if (isBuildSkill) return t('docs.buildSkillContent');
+    if (isSuperpowersEngineering) return t('docs.superpowersEngineeringContent');
     return t('docs.content');
   };
 
@@ -143,6 +147,17 @@ const Docs: React.FC = () => {
                     >
                       <GraduationCap size={18} />
                       {t('docs.buildSkill')}
+                    </Link>
+                    <Link 
+                      to="/docs/superpowers-engineering" 
+                      className={`flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-xl border-2 transition-all no-underline font-bold text-sm sm:text-base ${
+                        isSuperpowersEngineering 
+                          ? 'bg-accent-lime border-foreground-dark text-foreground-dark shadow-[4px_4px_0px_0px_rgba(15,23,42,1)]' 
+                          : 'bg-white border-transparent text-foreground-muted hover:border-foreground-dark'
+                      }`}
+                    >
+                      <Layout size={18} />
+                      {t('docs.superpowersEngineering')}
                     </Link>
                   </div>
                 </section>
